@@ -12,6 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		FirebaseApp.configure()
 		
+		// choose rootVC
 		self.window = UIWindow(frame: UIScreen.main.bounds)
 		let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
 		let user = Auth.auth().currentUser
@@ -20,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				self.window?.rootViewController = loginVC
 			}
 		} else {
-			if let homeVC: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "homeVC") as? UIViewController {
+			if let homeVC: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "InitialHome") as? UITabBarController {
 				self.window?.rootViewController = homeVC
 			}
 		}
