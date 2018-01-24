@@ -189,7 +189,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c4C-Pf-SxF">
                                 <rect key="frame" x="150" y="100" width="75" height="67"/>
@@ -207,10 +207,10 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="9hR-rM-5g2">
-                                <rect key="frame" x="80" y="617" width="215" height="30"/>
+                                <rect key="frame" x="90" y="617" width="195" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oE8-pd-fOX">
                                         <rect key="frame" x="0.0" y="0.0" width="145" height="30"/>
@@ -219,7 +219,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3I8-8B-KYK">
-                                        <rect key="frame" x="150" y="0.0" width="65" height="30"/>
+                                        <rect key="frame" x="150" y="0.0" width="45" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <state key="normal" title="Login in"/>
                                         <connections>
@@ -255,7 +255,7 @@
                             <constraint firstItem="1ey-Ex-GkR" firstAttribute="top" secondItem="mob-MP-e17" secondAttribute="top" id="MHA-5V-pMU"/>
                             <constraint firstItem="Zrq-1e-Bs7" firstAttribute="top" secondItem="RyP-I6-5im" secondAttribute="bottom" constant="25" id="MIr-cV-4I2"/>
                             <constraint firstItem="zPF-4Z-uE9" firstAttribute="top" secondItem="GCg-mU-ULX" secondAttribute="bottom" constant="40" id="NME-rk-Yyj"/>
-                            <constraint firstItem="9hR-rM-5g2" firstAttribute="leading" secondItem="ntH-0N-ZEb" secondAttribute="leading" constant="80" id="Q5b-uT-0KI"/>
+                            <constraint firstItem="9hR-rM-5g2" firstAttribute="leading" secondItem="ntH-0N-ZEb" secondAttribute="leading" constant="90" id="Q5b-uT-0KI"/>
                             <constraint firstItem="RyP-I6-5im" firstAttribute="leading" secondItem="ntH-0N-ZEb" secondAttribute="leading" constant="60" id="RJj-uf-qP3"/>
                             <constraint firstItem="9hR-rM-5g2" firstAttribute="centerX" secondItem="mob-MP-e17" secondAttribute="centerX" id="T2c-LP-Vj1"/>
                             <constraint firstItem="IA0-YM-mUX" firstAttribute="centerX" secondItem="mob-MP-e17" secondAttribute="centerX" id="UQJ-3j-qZg"/>
@@ -300,7 +300,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jl9-ZF-QAL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1153" y="134"/>
+            <point key="canvasLocation" x="857" y="125"/>
         </scene>
     </scenes>
     <resources>
