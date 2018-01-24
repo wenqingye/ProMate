@@ -9,6 +9,13 @@ extension UIButton {
 	}
 }
 
+extension UIImageView {
+	func asCircle() {
+		self.layer.cornerRadius = self.frame.width / 2
+		self.layer.masksToBounds = true
+	}
+}
+
 extension UIViewController{
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
