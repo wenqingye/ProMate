@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		405D52C220184EA300A70E16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405D52C120184EA300A70E16 /* AppDelegate.swift */; };
+		405D52C420184EA300A70E16 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405D52C320184EA300A70E16 /* ViewController.swift */; };
+		405D52C720184EA300A70E16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 405D52C520184EA300A70E16 /* Main.storyboard */; };
+		405D52C920184EA300A70E16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 405D52C820184EA300A70E16 /* Assets.xcassets */; };
+		405D52CC20184EA300A70E16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 405D52CA20184EA300A70E16 /* LaunchScreen.storyboard */; };
+		405D52D720184EA300A70E16 /* ProMateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405D52D620184EA300A70E16 /* ProMateTests.swift */; };
+		405D52E220184EA300A70E16 /* ProMateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405D52E120184EA300A70E16 /* ProMateUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		405D52D320184EA300A70E16 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 405D52B620184EA300A70E16 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 405D52BD20184EA300A70E16;
+			remoteInfo = ProMate;
+		};
+		405D52DE20184EA300A70E16 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 405D52B620184EA300A70E16 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 405D52BD20184EA300A70E16;
+			remoteInfo = ProMate;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		405D52BE20184EA300A70E16 /* ProMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		405D52C120184EA300A70E16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		405D52C320184EA300A70E16 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		405D52C620184EA300A70E16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		405D52C820184EA300A70E16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		405D52CB20184EA300A70E16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		405D52CD20184EA300A70E16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		405D52D220184EA300A70E16 /* ProMateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProMateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		405D52D620184EA300A70E16 /* ProMateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProMateTests.swift; sourceTree = "<group>"; };
+		405D52D820184EA300A70E16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		405D52DD20184EA300A70E16 /* ProMateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProMateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		405D52E120184EA300A70E16 /* ProMateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProMateUITests.swift; sourceTree = "<group>"; };
+		405D52E320184EA300A70E16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		405D52BB20184EA300A70E16 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		405D52CF20184EA300A70E16 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		405D52DA20184EA300A70E16 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		405D52B520184EA300A70E16 = {
+			isa = PBXGroup;
+			children = (
+				405D52C020184EA300A70E16 /* ProMate */,
+				405D52D520184EA300A70E16 /* ProMateTests */,
+				405D52E020184EA300A70E16 /* ProMateUITests */,
+				405D52BF20184EA300A70E16 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		405D52BF20184EA300A70E16 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				405D52BE20184EA300A70E16 /* ProMate.app */,
+				405D52D220184EA300A70E16 /* ProMateTests.xctest */,
+				405D52DD20184EA300A70E16 /* ProMateUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		405D52C020184EA300A70E16 /* ProMate */ = {
+			isa = PBXGroup;
+			children = (
+				405D52C120184EA300A70E16 /* AppDelegate.swift */,
+				405D52C320184EA300A70E16 /* ViewController.swift */,
+				405D52C520184EA300A70E16 /* Main.storyboard */,
+				405D52C820184EA300A70E16 /* Assets.xcassets */,
+				405D52CA20184EA300A70E16 /* LaunchScreen.storyboard */,
+				405D52CD20184EA300A70E16 /* Info.plist */,
+			);
+			path = ProMate;
+			sourceTree = "<group>";
+		};
+		405D52D520184EA300A70E16 /* ProMateTests */ = {
+			isa = PBXGroup;
+			children = (
+				405D52D620184EA300A70E16 /* ProMateTests.swift */,
+				405D52D820184EA300A70E16 /* Info.plist */,
+			);
+			path = ProMateTests;
+			sourceTree = "<group>";
+		};
+		405D52E020184EA300A70E16 /* ProMateUITests */ = {
+			isa = PBXGroup;
+			children = (
+				405D52E120184EA300A70E16 /* ProMateUITests.swift */,
+				405D52E320184EA300A70E16 /* Info.plist */,
+			);
+			path = ProMateUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		405D52BD20184EA300A70E16 /* ProMate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 405D52E620184EA300A70E16 /* Build configuration list for PBXNativeTarget "ProMate" */;
+			buildPhases = (
+				405D52BA20184EA300A70E16 /* Sources */,
+				405D52BB20184EA300A70E16 /* Frameworks */,
+				405D52BC20184EA300A70E16 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ProMate;
+			productName = ProMate;
+			productReference = 405D52BE20184EA300A70E16 /* ProMate.app */;
+			productType = "com.apple.product-type.application";
+		};
+		405D52D120184EA300A70E16 /* ProMateTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 405D52E920184EA300A70E16 /* Build configuration list for PBXNativeTarget "ProMateTests" */;
+			buildPhases = (
+				405D52CE20184EA300A70E16 /* Sources */,
+				405D52CF20184EA300A70E16 /* Frameworks */,
+				405D52D020184EA300A70E16 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				405D52D420184EA300A70E16 /* PBXTargetDependency */,
+			);
+			name = ProMateTests;
+			productName = ProMateTests;
+			productReference = 405D52D220184EA300A70E16 /* ProMateTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		405D52DC20184EA300A70E16 /* ProMateUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 405D52EC20184EA300A70E16 /* Build configuration list for PBXNativeTarget "ProMateUITests" */;
+			buildPhases = (
+				405D52D920184EA300A70E16 /* Sources */,
+				405D52DA20184EA300A70E16 /* Frameworks */,
+				405D52DB20184EA300A70E16 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				405D52DF20184EA300A70E16 /* PBXTargetDependency */,
+			);
+			name = ProMateUITests;
+			productName = ProMateUITests;
+			productReference = 405D52DD20184EA300A70E16 /* ProMateUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		405D52B620184EA300A70E16 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Wenqing Ye";
+				TargetAttributes = {
+					405D52BD20184EA300A70E16 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					405D52D120184EA300A70E16 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 405D52BD20184EA300A70E16;
+					};
+					405D52DC20184EA300A70E16 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 405D52BD20184EA300A70E16;
+					};
+				};
+			};
+			buildConfigurationList = 405D52B920184EA300A70E16 /* Build configuration list for PBXProject "ProMate" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 405D52B520184EA300A70E16;
+			productRefGroup = 405D52BF20184EA300A70E16 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				405D52BD20184EA300A70E16 /* ProMate */,
+				405D52D120184EA300A70E16 /* ProMateTests */,
+				405D52DC20184EA300A70E16 /* ProMateUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		405D52BC20184EA300A70E16 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				405D52CC20184EA300A70E16 /* LaunchScreen.storyboard in Resources */,
+				405D52C920184EA300A70E16 /* Assets.xcassets in Resources */,
+				405D52C720184EA300A70E16 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		405D52D020184EA300A70E16 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		405D52DB20184EA300A70E16 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		405D52BA20184EA300A70E16 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				405D52C420184EA300A70E16 /* ViewController.swift in Sources */,
+				405D52C220184EA300A70E16 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		405D52CE20184EA300A70E16 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				405D52D720184EA300A70E16 /* ProMateTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		405D52D920184EA300A70E16 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				405D52E220184EA300A70E16 /* ProMateUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		405D52D420184EA300A70E16 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 405D52BD20184EA300A70E16 /* ProMate */;
+			targetProxy = 405D52D320184EA300A70E16 /* PBXContainerItemProxy */;
+		};
+		405D52DF20184EA300A70E16 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 405D52BD20184EA300A70E16 /* ProMate */;
+			targetProxy = 405D52DE20184EA300A70E16 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		405D52C520184EA300A70E16 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				405D52C620184EA300A70E16 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		405D52CA20184EA300A70E16 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				405D52CB20184EA300A70E16 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		405D52E420184EA300A70E16 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		405D52E520184EA300A70E16 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		405D52E720184EA300A70E16 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V4LFK8S352;
+				INFOPLIST_FILE = ProMate/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jessieye.ProMate;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		405D52E820184EA300A70E16 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V4LFK8S352;
+				INFOPLIST_FILE = ProMate/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jessieye.ProMate;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		405D52EA20184EA300A70E16 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V4LFK8S352;
+				INFOPLIST_FILE = ProMateTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jessieye.ProMateTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProMate.app/ProMate";
+			};
+			name = Debug;
+		};
+		405D52EB20184EA300A70E16 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V4LFK8S352;
+				INFOPLIST_FILE = ProMateTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jessieye.ProMateTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProMate.app/ProMate";
+			};
+			name = Release;
+		};
+		405D52ED20184EA300A70E16 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V4LFK8S352;
+				INFOPLIST_FILE = ProMateUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jessieye.ProMateUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ProMate;
+			};
+			name = Debug;
+		};
+		405D52EE20184EA300A70E16 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V4LFK8S352;
+				INFOPLIST_FILE = ProMateUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jessieye.ProMateUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ProMate;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		405D52B920184EA300A70E16 /* Build configuration list for PBXProject "ProMate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				405D52E420184EA300A70E16 /* Debug */,
+				405D52E520184EA300A70E16 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		405D52E620184EA300A70E16 /* Build configuration list for PBXNativeTarget "ProMate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				405D52E720184EA300A70E16 /* Debug */,
+				405D52E820184EA300A70E16 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		405D52E920184EA300A70E16 /* Build configuration list for PBXNativeTarget "ProMateTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				405D52EA20184EA300A70E16 /* Debug */,
+				405D52EB20184EA300A70E16 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		405D52EC20184EA300A70E16 /* Build configuration list for PBXNativeTarget "ProMateUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				405D52ED20184EA300A70E16 /* Debug */,
+				405D52EE20184EA300A70E16 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 405D52B620184EA300A70E16 /* Project object */;
+}
