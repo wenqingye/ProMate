@@ -46,7 +46,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="clr-MR-X1c" id="ZfK-NG-ty5"/>
                                 </connections>
@@ -58,7 +58,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="clr-MR-X1c" id="RLH-Ko-q69"/>
                                 </connections>
@@ -143,7 +143,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fPV-gF-uUc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="825" y="804"/>
+            <point key="canvasLocation" x="1153" y="815"/>
         </scene>
         <!--SignupVC-->
         <scene sceneID="DxX-VL-Z4s">
@@ -273,11 +273,11 @@
                             <constraint firstItem="9hR-rM-5g2" firstAttribute="leading" secondItem="ntH-0N-ZEb" secondAttribute="leading" constant="90" id="Q5b-uT-0KI"/>
                             <constraint firstItem="RyP-I6-5im" firstAttribute="leading" secondItem="ntH-0N-ZEb" secondAttribute="leading" constant="60" id="RJj-uf-qP3"/>
                             <constraint firstItem="9hR-rM-5g2" firstAttribute="centerX" secondItem="mob-MP-e17" secondAttribute="centerX" id="T2c-LP-Vj1"/>
-                            <constraint firstItem="9hR-rM-5g2" firstAttribute="top" secondItem="IA0-YM-mUX" secondAttribute="bottom" constant="80" id="UP9-oo-ot1"/>
                             <constraint firstItem="IA0-YM-mUX" firstAttribute="centerX" secondItem="mob-MP-e17" secondAttribute="centerX" id="UQJ-3j-qZg"/>
                             <constraint firstItem="IA0-YM-mUX" firstAttribute="top" secondItem="Zrq-1e-Bs7" secondAttribute="bottom" constant="40" id="Xym-N4-5RM"/>
                             <constraint firstItem="Zrq-1e-Bs7" firstAttribute="leading" secondItem="ntH-0N-ZEb" secondAttribute="leading" constant="60" id="ZFA-zQ-VNY"/>
                             <constraint firstItem="sCB-yz-Reh" firstAttribute="centerX" secondItem="mob-MP-e17" secondAttribute="centerX" id="blt-qc-jg0"/>
+                            <constraint firstItem="ntH-0N-ZEb" firstAttribute="bottom" secondItem="9hR-rM-5g2" secondAttribute="bottom" constant="20" id="cHR-hC-nbO"/>
                             <constraint firstItem="RyP-I6-5im" firstAttribute="centerX" secondItem="mob-MP-e17" secondAttribute="centerX" id="fU3-l7-Ow2"/>
                             <constraint firstItem="c4C-Pf-SxF" firstAttribute="top" secondItem="1ey-Ex-GkR" secondAttribute="bottom" constant="40" id="lli-Sp-9CS"/>
                             <constraint firstItem="1ey-Ex-GkR" firstAttribute="leading" secondItem="ntH-0N-ZEb" secondAttribute="leading" id="loT-nN-Ecb"/>
@@ -298,7 +298,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UVN-H9-VBs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2358" y="123"/>
+            <point key="canvasLocation" x="2516" y="133.5832083958021"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="enq-vg-37A">
+            <objects>
+                <navigationController storyboardIdentifier="InitialLogin" automaticallyAdjustsScrollViewInsets="NO" id="2Sc-U6-yzC" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="N62-ly-z6A">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="clr-MR-X1c" kind="relationship" relationship="rootViewController" id="fXI-yE-EEc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jl9-ZF-QAL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1153" y="134"/>
         </scene>
     </scenes>
     <resources>
