@@ -7,6 +7,7 @@ typealias completionHandler = (Any) ->()
 typealias completionHandler2 = (Any, Any) ->()
 typealias taskCompletionHandler = (Task) -> ()
 typealias projectCompletionHandler = (Project) -> ()
+typealias userCompletionHandler = (User) -> ()
 
 
 class AccessFirebase : NSObject{
@@ -55,7 +56,7 @@ class AccessFirebase : NSObject{
 			guard let value = snapshot.value as? [String: Any] else {
 				return
 			}
-			if let name = value["name"] as? String, let id = value["id"] as? String, let managerName = value["managerName"] as? String, let managerId = value["managerId"] as? String, let tasks = value["tasks"] as? [String: Any] {
+			if let name = value["name"] as? String, let id = value["id"] as? String, let managerId = value["managerId"] as? String, let tasks = value["tasks"] as? [String: Any] {
 				let tasksIds = Array(tasks.keys)
 				let project = Project(name: name, id: id, tasksIds: tasksIds, managerId: managerId)
 				completion(project)
@@ -78,6 +79,19 @@ class AccessFirebase : NSObject{
 				}
 				let task = Task(name: name, id: id, content: content, startDate: startDate, endData: endDate, isFinished: finished, projectId: projectId, userId: userId)
 				completion(task)
+			}
+		}
+	}
+	
+	// get user object by user id
+	func getUser(id: String, completion: @escaping userCompletionHandler) {
+		databaseRef.child("users").child(id).observeSingleEvent(of: .value) { (snapshot) in
+			guard let value = snapshot.value as? [String: Any] else {
+				return
+			}
+			if let name = value["name"] as? String, let email = value["email"] as? String, let id = value["id"] as? String, let role = value["role"] as? String, let profilePic = value["profilePic"] as? String {
+				let user = User(name: name, email: email, id: id, role: role, profilePic: profilePic)
+				completion(user)
 			}
 		}
 	}
