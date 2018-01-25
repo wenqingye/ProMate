@@ -1,11 +1,16 @@
 
 import UIKit
 import Firebase
+import TWMessageBarManager
+import SDWebImage
 
 class AllUsersVC: UIViewController {
 
     var databaseRef : DatabaseReference?
     var allUserList : [User]?
+    
+    @IBOutlet weak var userInfoTbl: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -13,11 +18,12 @@ class AllUsersVC: UIViewController {
         databaseRef = Database.database().reference()
         //list all user info here
         getAllUserList()
+        userInfoTbl.dataSource = self
+        userInfoTbl.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }
@@ -42,10 +48,26 @@ extension AllUsersVC{
                     }
                 }
             }
+            //filter all users only keep developers
             self.allUserList = allUsers
-//            self.allUserTableView.reloadData()
+            self.userInfoTbl.reloadData()
 //            self.refreshControll.endRefreshing()
         })
     }
+}
 
+extension AllUsersVC : UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (allUserList?.count)!
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCell
+        let oneUser = allUserList![indexPath.row]
+        cell?.nameLabel.text = oneUser.name
+        cell?.emailLabel.text = oneUser.email
+        let url = URL(string : oneUser.profilePic)
+        cell?.profileImage.sd_setImage(with: url!, completed: nil)
+        return cell!
+    }
 }

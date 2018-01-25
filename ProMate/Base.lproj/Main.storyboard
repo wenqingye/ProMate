@@ -717,6 +717,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5gg-VO-dMp"/>
                     </view>
+                    <connections>
+                        <outlet property="userInfoTbl" destination="MpF-Vq-rDi" id="fWB-os-ZCN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GN3-Hw-Q2x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
