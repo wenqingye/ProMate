@@ -7,5 +7,5 @@ struct User {
 	var email: String
 	var id: String
 	var role: String   // manager, developer
-	var profilePic: URL
+	var profilePic: String
 }

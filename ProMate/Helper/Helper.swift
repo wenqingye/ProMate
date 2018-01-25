@@ -28,7 +28,6 @@ extension UIViewController{
     }
 }
 
-
 extension UIViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     func getPicture(){

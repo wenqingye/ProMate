@@ -11,14 +11,22 @@ class SignupVC: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPswTextField: UITextField!
+    @IBOutlet weak var btnManager: UIButton!
+    @IBOutlet weak var btnDeveloper: UIButton!
     
     var databaseRef: DatabaseReference?
     var storageRef : StorageReference?
+    var userRole : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        databaseRef = Database.database().reference().child("Users")
+        databaseRef = Database.database().reference().child("users")
         storageRef = Storage.storage().reference()
+        
+        nameTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        confirmPswTextField.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,18 +36,21 @@ class SignupVC: UIViewController {
     
     @IBAction func btnSignupAction(_ sender: Any) {
         //check if two passowrd is the same, email address can't be null
-        if let password = passwordTextField.text, let email = emailTextField.text{
+        if let password = passwordTextField.text, let email = emailTextField.text, let role = userRole{
             if passwdIsValid() && !(email.isEmpty){
                 Auth.auth().createUser(withEmail: email, password: password){ (user,error) in
                     if let err = error{
                         print(err.localizedDescription)
                     }else{
                         if let fireBaseUser = user{
-                            let userDict = ["name" : self.nameTextField.text!,"email": email, "password" : password]
+                            let userDict = ["name" : self.nameTextField.text!,"email": email, "password" : password, "profilePic" : "", "role" : role]
                             self.databaseRef?.child(fireBaseUser.uid).updateChildValues(userDict)
                         }
                         TWMessageBarManager.sharedInstance().showMessage(withTitle: "Success", description: "sign up successfully", type: .info)
                         //go to home page?
+                        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC") as? HomeVC {
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        }
                     }
                 }
             }
@@ -57,11 +68,23 @@ class SignupVC: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func btnChooseManager(_ sender: Any) {
+        btnManager.isSelected = true
+        btnDeveloper.isSelected = false
+        userRole = "manager"
+    }
+    
+    @IBAction func btnChooseDeveloper(_ sender: Any) {
+        btnDeveloper.isSelected = true
+        btnManager.isSelected = false
+        userRole = "developer"
+    }
+    
 }
 
 
 extension SignupVC: UITextFieldDelegate{
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == nameTextField{
             emailTextField.becomeFirstResponder()
         }else if textField == emailTextField{
@@ -71,6 +94,7 @@ extension SignupVC: UITextFieldDelegate{
         }else{
             confirmPswTextField.resignFirstResponder()
         }
+        return true
     }
 }
 
