@@ -427,6 +427,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Y66-Dm-MMs"/>
                     </view>
+                    <connections>
+                        <outlet property="managerNameLabel" destination="Dxi-Bz-Oa9" id="bQY-KH-DRl"/>
+                        <outlet property="managerProfileImage" destination="SnJ-Se-5SK" id="DjQ-LM-Ala"/>
+                        <outlet property="projectNameLabel" destination="T8x-me-Ag6" id="H5d-mN-XAI"/>
+                        <outlet property="tblView" destination="Dbd-3g-0Jc" id="6Nz-bA-EGx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="39Z-jm-9uu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
