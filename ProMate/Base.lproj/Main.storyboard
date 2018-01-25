@@ -325,7 +325,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dbd-3g-0Jc">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="109" width="375" height="558"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" rowHeight="78" id="XLW-la-byy" customClass="TaskCell" customModule="ProMate" customModuleProvider="target">
@@ -377,12 +377,52 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="33T-ME-oD3">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="109"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8x-me-Ag6">
+                                        <rect key="frame" x="15" y="15" width="345" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SnJ-Se-5SK">
+                                        <rect key="frame" x="15" y="49" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="4BH-Om-4ob"/>
+                                            <constraint firstAttribute="width" constant="40" id="cvD-Sa-77P"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manager Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dxi-Bz-Oa9">
+                                        <rect key="frame" x="63" y="56.5" width="297" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Dxi-Bz-Oa9" firstAttribute="leading" secondItem="SnJ-Se-5SK" secondAttribute="trailing" constant="8" id="5g9-X3-xuf"/>
+                                    <constraint firstItem="SnJ-Se-5SK" firstAttribute="leading" secondItem="33T-ME-oD3" secondAttribute="leading" constant="15" id="5gl-u9-47X"/>
+                                    <constraint firstAttribute="trailing" secondItem="T8x-me-Ag6" secondAttribute="trailing" constant="15" id="Aah-NV-UgM"/>
+                                    <constraint firstAttribute="trailing" secondItem="Dxi-Bz-Oa9" secondAttribute="trailing" constant="15" id="EwW-Po-5sm"/>
+                                    <constraint firstItem="SnJ-Se-5SK" firstAttribute="top" secondItem="T8x-me-Ag6" secondAttribute="bottom" constant="8" id="YVO-rN-M53"/>
+                                    <constraint firstAttribute="bottom" secondItem="Dxi-Bz-Oa9" secondAttribute="bottom" constant="28.5" id="ZC4-6U-Cgc"/>
+                                    <constraint firstItem="T8x-me-Ag6" firstAttribute="leading" secondItem="33T-ME-oD3" secondAttribute="leading" constant="15" id="gl8-AP-o4S"/>
+                                    <constraint firstItem="T8x-me-Ag6" firstAttribute="top" secondItem="33T-ME-oD3" secondAttribute="top" constant="15" id="nri-K3-bna"/>
+                                    <constraint firstAttribute="height" constant="109" id="ob7-ek-NtV"/>
+                                    <constraint firstItem="Dxi-Bz-Oa9" firstAttribute="top" secondItem="T8x-me-Ag6" secondAttribute="bottom" constant="15" id="qm4-fV-ZFn"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Y66-Dm-MMs" firstAttribute="bottom" secondItem="Dbd-3g-0Jc" secondAttribute="bottom" id="FT2-IX-VC5"/>
+                            <constraint firstItem="33T-ME-oD3" firstAttribute="top" secondItem="mqX-Re-dkg" secondAttribute="top" id="FzN-Us-2J5"/>
                             <constraint firstItem="Y66-Dm-MMs" firstAttribute="trailing" secondItem="Dbd-3g-0Jc" secondAttribute="trailing" id="Hnv-PR-us5"/>
-                            <constraint firstItem="Dbd-3g-0Jc" firstAttribute="top" secondItem="Y66-Dm-MMs" secondAttribute="top" id="KlH-Tc-9qb"/>
+                            <constraint firstItem="Dbd-3g-0Jc" firstAttribute="top" secondItem="33T-ME-oD3" secondAttribute="bottom" id="KnP-ir-ehI"/>
+                            <constraint firstItem="33T-ME-oD3" firstAttribute="leading" secondItem="Y66-Dm-MMs" secondAttribute="leading" id="ZOy-Ls-qO0"/>
+                            <constraint firstItem="33T-ME-oD3" firstAttribute="trailing" secondItem="Y66-Dm-MMs" secondAttribute="trailing" id="h60-pl-fXn"/>
                             <constraint firstItem="Dbd-3g-0Jc" firstAttribute="leading" secondItem="Y66-Dm-MMs" secondAttribute="leading" id="o6u-0B-Ajo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Y66-Dm-MMs"/>
@@ -635,6 +675,7 @@
                                                         <constraint firstAttribute="height" constant="40" id="S8a-sc-QUW"/>
                                                     </constraints>
                                                     <state key="normal" image="add"/>
+                                                    <state key="selected" image="added"/>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -1028,6 +1069,7 @@
         <image name="activity" width="25" height="25"/>
         <image name="activitySelected" width="25" height="25"/>
         <image name="add" width="50" height="50"/>
+        <image name="added" width="40" height="40"/>
         <image name="chooseBtnSelected" width="30" height="30"/>
         <image name="chooseBtnUnselected" width="30" height="30"/>
         <image name="defaultProfileImg" width="35" height="35"/>
