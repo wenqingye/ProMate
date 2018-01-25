@@ -5,12 +5,14 @@ import Firebase
 class AllUsersVC: UIViewController {
 
     var databaseRef : DatabaseReference?
+    var allUserList : [User]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         databaseRef = Database.database().reference()
         //list all user info here
+        getAllUserList()
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,7 +42,7 @@ extension AllUsersVC{
                     }
                 }
             }
-//            self.allUserList = arrofDict
+            self.allUserList = allUsers
 //            self.allUserTableView.reloadData()
 //            self.refreshControll.endRefreshing()
         })
