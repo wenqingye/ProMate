@@ -16,6 +16,7 @@ class HomeVC: UIViewController {
 
 		databaseRef = Database.database().reference()
 		getProjects()
+		navigationItem.rightBarButtonItem?.titleTextAttributes(for: )
     }
 
 	

@@ -9,9 +9,8 @@
 import UIKit
 import Firebase
 
-class AddTaskVC: UIViewController {
+class AddTaskVC: UIViewController{
 
-    
     @IBOutlet weak var datePickerBtmConstraint: NSLayoutConstraint!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
@@ -20,7 +19,11 @@ class AddTaskVC: UIViewController {
     @IBOutlet weak var endDateLbl: UILabel!
     @IBOutlet weak var taskDatePicker: UIDatePicker!
     var dateType = "start"
+    var delegate : AddNewTask?
     var curProject : Project?
+    var newTask = Task(name: "", id: "", content: "", startDate: "", endData: "", isFinished: false, projectId: "", userId: "")
+    
+    var databaseRef : DatabaseReference?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +31,7 @@ class AddTaskVC: UIViewController {
         titleTextField.delegate = self
         contentTextView.text = "Type task content here ..."
         contentTextView.textColor = UIColor.lightGray
+        databaseRef = Database.database().reference()
         hideKeyboardWhenTappedAround()
     }
 
@@ -40,23 +44,40 @@ class AddTaskVC: UIViewController {
         var dict = [String : Any]()
         if let startDate = startDateLbl.text{
             dict["startDate"] = startDate
+            newTask.startDate = startDate
         }
         if let endDate = endDateLbl.text{
             dict["endDate"] = endDate
+            newTask.endData = endDate
         }
         if let taskName = titleTextField.text{
             dict["name"] = taskName
+            newTask.name = taskName
         }
         if let content = contentTextView.text{
             dict["content"] = content
+            newTask.content = content
         }
         if let oneProject = curProject{
             dict["projectId"] = oneProject.id
+            newTask.projectId = oneProject.id
         }
         dict["idFinished"] = false
-        //update database
-        let key = Database.database().reference().child("tasks").childByAutoId().key
-        Database.database().reference().child("tasks").child(key).updateChildValues(dict)
+        dict["userId"] = newTask.id
+        //update database/
+        //task
+        let key = databaseRef?.child("tasks").childByAutoId().key
+        databaseRef?.child("tasks").child(key!).updateChildValues(dict)
+        //update user info if assign an developer
+        if !newTask.userId.isEmpty && newTask.userId != ""{
+            let taskDict = [key! : "1"]
+            databaseRef?.child("users").child(newTask.userId).child("tasks").updateChildValues(taskDict)
+        }
+    
+        //send task info back
+        delegate?.didAddNewTask(newTask: newTask)
+        //pop view controller
+        navigationController?.popViewController(animated: true)
     }
     
     
@@ -68,6 +89,10 @@ class AddTaskVC: UIViewController {
     
     @IBAction func btnAddAssignee(_ sender: Any) {
         //add assignee, go to all users vc and choose one user
+        if let controller = storyboard?.instantiateViewController(withIdentifier: "AllUsersVC") as? AllUsersVC{
+            controller.delegate = self
+            navigationController?.pushViewController(controller, animated: true)
+        }
     }
     
     @IBAction func btnStartDate(_ sender: Any) {
@@ -97,7 +122,7 @@ class AddTaskVC: UIViewController {
     
 }
 
-
+//MARK --> TextView and TextField delegate method
 extension AddTaskVC: UITextViewDelegate, UITextFieldDelegate{
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView == contentTextView{
@@ -115,13 +140,15 @@ extension AddTaskVC: UITextViewDelegate, UITextFieldDelegate{
     
 }
 
-extension Date{
-    func toString() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy hh:mm"
-        return dateFormatter.string(from: self)
-        
+//MARK --> delegate method from add new assign class, get the information about the assignee
+extension AddTaskVC : AddAssignee{
+    func didAddNewAssignee(user: User) {
+        self.assigneeNameLbl.text = user.name
+        self.newTask.userId = user.id
     }
 }
 
-
+//MARK --> protocol to send the new added task to formaer view controller
+protocol AddNewTask {
+    func didAddNewTask(newTask : Task)
+}

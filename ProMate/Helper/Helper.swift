@@ -78,3 +78,12 @@ class ReadData:NSObject {
         return oneUser
     }
 }
+
+extension Date{
+    func toString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy hh:mm"
+        return dateFormatter.string(from: self)
+        
+    }
+}
