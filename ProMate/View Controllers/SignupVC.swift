@@ -22,6 +22,11 @@ class SignupVC: UIViewController {
         super.viewDidLoad()
         databaseRef = Database.database().reference().child("users")
         storageRef = Storage.storage().reference()
+        
+        nameTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        confirmPswTextField.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,7 +84,7 @@ class SignupVC: UIViewController {
 
 
 extension SignupVC: UITextFieldDelegate{
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == nameTextField{
             emailTextField.becomeFirstResponder()
         }else if textField == emailTextField{
@@ -89,6 +94,7 @@ extension SignupVC: UITextFieldDelegate{
         }else{
             confirmPswTextField.resignFirstResponder()
         }
+        return true
     }
 }
 
