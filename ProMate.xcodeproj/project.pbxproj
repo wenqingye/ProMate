@@ -24,6 +24,7 @@
 		40AD75A020194C52009EB321 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AD759F20194C52009EB321 /* CurrentUser.swift */; };
 		40AD75A220197076009EB321 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AD75A120197076009EB321 /* Project.swift */; };
 		40AD75A420197081009EB321 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AD75A320197081009EB321 /* Task.swift */; };
+		40AD75A820198B58009EB321 /* TaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AD75A720198B58009EB321 /* TaskVC.swift */; };
 		9201671D37138B034A818703 /* Pods_ProMateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D27F7D7134E0D5D0F33BC0B /* Pods_ProMateTests.framework */; };
 		AEBCC84DCFFAC4C89197EE35 /* Pods_ProMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29EAF257ABA9241DC4EB9AAA /* Pods_ProMate.framework */; };
 		AFB3054ED8C0108F39CB1060 /* Pods_ProMateUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D87D65791FC54EB5B9189C8 /* Pods_ProMateUITests.framework */; };
@@ -74,6 +75,7 @@
 		40AD759F20194C52009EB321 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		40AD75A120197076009EB321 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		40AD75A320197081009EB321 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		40AD75A720198B58009EB321 /* TaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskVC.swift; sourceTree = "<group>"; };
 		7D27F7D7134E0D5D0F33BC0B /* Pods_ProMateTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProMateTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91F50134E336B2A279F9D93B /* Pods-ProMateUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProMateUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProMateUITests/Pods-ProMateUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9EE909901BD23A17ACAFB91E /* Pods-ProMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProMate.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProMate/Pods-ProMate.release.xcconfig"; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				405D52F420184FBE00A70E16 /* LoginVC.swift */,
 				405D52F220184FBD00A70E16 /* SignupVC.swift */,
 				405D52F320184FBD00A70E16 /* HomeVC.swift */,
+				40AD75A720198B58009EB321 /* TaskVC.swift */,
 				40AD759D2019476D009EB321 /* VCCells.swift */,
 			);
 			path = "View Controllers";
@@ -535,6 +538,7 @@
 				405D52F520184FBE00A70E16 /* SignupVC.swift in Sources */,
 				0F581B8C2018554400794CF2 /* AccessFirebase.swift in Sources */,
 				405D52F620184FBE00A70E16 /* HomeVC.swift in Sources */,
+				40AD75A820198B58009EB321 /* TaskVC.swift in Sources */,
 				40AD75A220197076009EB321 /* Project.swift in Sources */,
 				40AD75A420197081009EB321 /* Task.swift in Sources */,
 				405D52C220184EA300A70E16 /* AppDelegate.swift in Sources */,

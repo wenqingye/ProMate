@@ -6,4 +6,5 @@ struct Project {
 	var id: String
 	var tasks: [Task]
 	var managerId: String
+	var manageName: String
 }
