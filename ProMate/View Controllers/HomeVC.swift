@@ -13,7 +13,6 @@ class HomeVC: UIViewController {
         super.viewDidLoad()
 
 		getProjects()
-		navigationItem.rightBarButtonItem?.titleTextAttributes(for: <#T##UIControlState#>)
     }
 
 	
@@ -51,6 +50,7 @@ class HomeVC: UIViewController {
 	
 	// MARK: - Button Actions
 	@IBAction func didClickAddProject(_ sender: UIBarButtonItem) {
+		
 	}
 	
 }
