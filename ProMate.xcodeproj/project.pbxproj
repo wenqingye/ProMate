@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F581B8C2018554400794CF2 /* AccessFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F581B8B2018554400794CF2 /* AccessFirebase.swift */; };
+		0F7692972019A43C0093F417 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7692962019A43C0093F417 /* SettingVC.swift */; };
 		405D52C220184EA300A70E16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405D52C120184EA300A70E16 /* AppDelegate.swift */; };
 		405D52C720184EA300A70E16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 405D52C520184EA300A70E16 /* Main.storyboard */; };
 		405D52C920184EA300A70E16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 405D52C820184EA300A70E16 /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 /* Begin PBXFileReference section */
 		0D87D65791FC54EB5B9189C8 /* Pods_ProMateUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProMateUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F581B8B2018554400794CF2 /* AccessFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessFirebase.swift; sourceTree = "<group>"; };
+		0F7692962019A43C0093F417 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		209E69D4F35E718F71F76517 /* Pods-ProMateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProMateTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProMateTests/Pods-ProMateTests.release.xcconfig"; sourceTree = "<group>"; };
 		29EAF257ABA9241DC4EB9AAA /* Pods_ProMate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProMate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DDF861AE81C8FD308E1D3D6 /* Pods-ProMate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProMate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProMate/Pods-ProMate.debug.xcconfig"; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				405D52F420184FBE00A70E16 /* LoginVC.swift */,
 				405D52F220184FBD00A70E16 /* SignupVC.swift */,
 				405D52F320184FBD00A70E16 /* HomeVC.swift */,
+				0F7692962019A43C0093F417 /* SettingVC.swift */,
 				40AD75A92019904B009EB321 /* AddProjectVC.swift */,
 				40AD75A720198B58009EB321 /* TaskVC.swift */,
 				40AD75AB2019905E009EB321 /* AddTaskVC.swift */,
@@ -545,6 +548,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				405D52F520184FBE00A70E16 /* SignupVC.swift in Sources */,
+				0F7692972019A43C0093F417 /* SettingVC.swift in Sources */,
 				0F581B8C2018554400794CF2 /* AccessFirebase.swift in Sources */,
 				40AD75AA2019904B009EB321 /* AddProjectVC.swift in Sources */,
 				405D52F620184FBE00A70E16 /* HomeVC.swift in Sources */,
