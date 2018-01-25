@@ -1,13 +1,11 @@
-//
-//  User.swift
-//  PMS
-//
-//  Created by Wenqing Ye on 1/23/18.
-//  Copyright © 2018 Wenqing Ye. All rights reserved.
-//
 
 import Foundation
 
 struct User {
 	
+	var name: String
+	var email: String
+	var id: String
+	var role: String   // manager, developer
+	var profilePic: URL
 }

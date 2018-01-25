@@ -189,7 +189,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="e7k-G8-P37"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Home" id="zGt-Zx-ypZ"/>
+                    <navigationItem key="navigationItem" title="Home" id="zGt-Zx-ypZ">
+                        <barButtonItem key="rightBarButtonItem" title="+" id="yMY-L6-gpe">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u7b-N1-tto" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -480,11 +484,11 @@
             </objects>
             <point key="canvasLocation" x="4550" y="821"/>
         </scene>
-        <!--Profile-->
+        <!--Setting-->
         <scene sceneID="aww-3s-uao">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aEI-qV-4EG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="profile" selectedImage="profileSelected" id="VNW-th-9MK"/>
+                    <tabBarItem key="tabBarItem" title="Setting" image="setting" selectedImage="settingSelected" id="VNW-th-9MK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AP4-LS-9OG">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -513,8 +517,8 @@
         <image name="loginLogo" width="654" height="189"/>
         <image name="notification" width="25" height="25"/>
         <image name="notificationSelected" width="25" height="25"/>
-        <image name="profile" width="25" height="25"/>
-        <image name="profileSelected" width="25" height="25"/>
+        <image name="setting" width="25" height="25"/>
+        <image name="settingSelected" width="25" height="25"/>
         <image name="signupLogo" width="501" height="58"/>
         <image name="task" width="25" height="25"/>
         <image name="taskSelected" width="25" height="25"/>
