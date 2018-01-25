@@ -8,7 +8,6 @@ class AllUsersVC: UIViewController {
 
     var databaseRef : DatabaseReference?
     var allDeveloper: [User]?
-    var taskToBeAssigned : Task?
     var delegate : AddAssignee?
     
     @IBOutlet weak var userInfoTbl: UITableView!
@@ -79,15 +78,7 @@ extension AllUsersVC : UITableViewDelegate, UITableViewDataSource{
         let choosedUser = allDeveloper![sender.tag]
         //update database
         //update the user info, and the task info
-        if let taskId = taskToBeAssigned?.id{
-            let dict = ["userId" : choosedUser.id]
-            let taskDict = [taskId : 1]
-            databaseRef?.child("tasks").child((taskToBeAssigned?.id)!).updateChildValues(dict)
-            databaseRef?.child("users").child(choosedUser.id).child("tasks").updateChildValues(taskDict)
-            
-            //send this info back to add task vc
-            
-            delegate?.didAddNewAssignee(user: choosedUser)
-        }
+        //send this info back to add task vc
+        delegate?.didAddNewAssignee(user: choosedUser)
     }
 }

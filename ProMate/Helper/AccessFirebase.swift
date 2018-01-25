@@ -38,12 +38,12 @@ class AccessFirebase : NSObject{
             //get cur userinfo // if user do not have an profile image, then it stored as "" in database
             self.curUserInfo = ReadData.parseUserData(value: value, uid: uid!)
             
-            if let projects = value["projects"] as? [String]{
-                self.curUserProjects = projects
+            if let projects = value["projects"] as? [String : String]{
+                self.curUserProjects = Array(projects.keys)
             }
             
-            if let tasks = value["tasks"] as? [String]{
-                self.curUserTasks = tasks
+            if let tasks = value["tasks"] as? [String : String]{
+                self.curUserTasks = Array(tasks.keys)
             }
         })
     }
