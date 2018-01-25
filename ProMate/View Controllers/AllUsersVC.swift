@@ -7,7 +7,8 @@ import SDWebImage
 class AllUsersVC: UIViewController {
 
     var databaseRef : DatabaseReference?
-    var allUserList : [User]?
+    var allDeveloper: [User]?
+    var taskToBeAssigned : Task?
     
     @IBOutlet weak var userInfoTbl: UITableView!
     
@@ -49,7 +50,7 @@ extension AllUsersVC{
                 }
             }
             //filter all users only keep developers
-            self.allUserList = allUsers
+            self.allDeveloper = allUsers.filter{ return $0.role == "developer"}
             self.userInfoTbl.reloadData()
 //            self.refreshControll.endRefreshing()
         })
@@ -58,16 +59,34 @@ extension AllUsersVC{
 
 extension AllUsersVC : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (allUserList?.count)!
+        return (allDeveloper?.count)!
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCell
-        let oneUser = allUserList![indexPath.row]
+        let oneUser = allDeveloper![indexPath.row]
         cell?.nameLabel.text = oneUser.name
         cell?.emailLabel.text = oneUser.email
         let url = URL(string : oneUser.profilePic)
         cell?.profileImage.sd_setImage(with: url!, completed: nil)
+        cell?.selectButton.tag = indexPath.row
+        cell?.selectButton.addTarget(self, action: #selector(selectUser), for: .touchUpInside)
         return cell!
+    }
+    
+    @objc func selectUser(sender : UIButton){
+        let choosedUser = allDeveloper![sender.tag]
+        //update database
+        //update the user info, and the task info
+        if let taskId = taskToBeAssigned?.id{
+            let dict = ["userId" : choosedUser.id]
+            let taskDict = [taskId : 1]
+            databaseRef?.child("tasks").child((taskToBeAssigned?.id)!).updateChildValues(dict)
+            databaseRef?.child("users").child(choosedUser.id).child("tasks").updateChildValues(taskDict)
+            
+            //send this info back to add task vc
+            let delegate : AddAssignee
+            delegate.didAddNewAssignee(user: choosedUser)
+        }
     }
 }

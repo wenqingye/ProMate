@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class AddTaskVC: UIViewController {
+class AddTaskVC: UIViewController{
 
     
     @IBOutlet weak var datePickerBtmConstraint: NSLayoutConstraint!
@@ -115,13 +115,10 @@ extension AddTaskVC: UITextViewDelegate, UITextFieldDelegate{
     
 }
 
-extension Date{
-    func toString() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy hh:mm"
-        return dateFormatter.string(from: self)
-        
+
+extension AddTaskVC : AddAssignee{
+    func didAddNewAssignee(user: User) {
+        self.assigneeNameLbl.text = user.name
     }
 }
-
 
