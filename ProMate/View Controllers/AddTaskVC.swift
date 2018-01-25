@@ -37,7 +37,7 @@ class AddTaskVC: UIViewController {
     }
     
     @IBAction func btnSaveTask(_ sender: Any) {
-        var dict = [String : String]()
+        var dict = [String : Any]()
         if let startDate = startDateLbl.text{
             dict["startDate"] = startDate
         }
@@ -53,6 +53,7 @@ class AddTaskVC: UIViewController {
         if let oneProject = curProject{
             dict["projectId"] = oneProject.id
         }
+        dict["idFinished"] = false
         //update database
         let key = Database.database().reference().child("tasks").childByAutoId().key
         Database.database().reference().child("tasks").child(key).updateChildValues(dict)
