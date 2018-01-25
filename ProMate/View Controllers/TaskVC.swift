@@ -4,6 +4,7 @@ import SDWebImage
 
 class TaskVC: UIViewController {
 	
+	// MARK: - Properties
 	var project: Project?
 	var tasks: [Task] = []
 	@IBOutlet weak var projectNameLabel: UILabel!
@@ -11,6 +12,8 @@ class TaskVC: UIViewController {
 	@IBOutlet weak var managerNameLabel: UILabel!
 	@IBOutlet weak var tblView: UITableView!
 	
+	
+	// MARK: - ViewController LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,8 +22,11 @@ class TaskVC: UIViewController {
 		getTasks()
     }
 	
+	
+	// MARK: - Methods
 	func setupUI() {
 		
+		navigationItem.title = "Task"
 		projectNameLabel.sizeToFit()
 		managerProfileImage.asCircle()
 		managerNameLabel.sizeToFit()

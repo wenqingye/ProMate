@@ -306,6 +306,9 @@
                     <navigationItem key="navigationItem" title="Home" id="zGt-Zx-ypZ">
                         <barButtonItem key="rightBarButtonItem" title="+" id="yMY-L6-gpe">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="didClickAddProject:" destination="b93-Ha-ETC" id="1Lq-91-wIc"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
