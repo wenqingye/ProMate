@@ -358,6 +358,9 @@
                                                     </constraints>
                                                     <state key="normal" image="unselect"/>
                                                     <state key="selected" image="select"/>
+                                                    <connections>
+                                                        <action selector="didClickFinishTask:" destination="ycy-2c-7UW" eventType="touchUpInside" id="IZL-Ae-Snw"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -728,10 +731,10 @@
             </objects>
             <point key="canvasLocation" x="3200.8000000000002" y="2181.8590704647677"/>
         </scene>
-        <!--View Controller-->
+        <!--Task DetailsVC-->
         <scene sceneID="jB5-68-pXa">
             <objects>
-                <viewController id="Vnl-2X-PyL" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TaskDetailsVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Vnl-2X-PyL" customClass="TaskDetailsVC" customModule="ProMate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dgJ-OY-qgq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

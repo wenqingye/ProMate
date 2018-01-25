@@ -75,14 +75,8 @@ class AccessFirebase : NSObject{
 			guard let value = snapshot.value as? [String: Any] else {
 				return
 			}
-			if let name = value["name"] as? String, let id = value["id"] as? String, let content = value["content"] as? String, let startDate = value["startDate"] as? String, let endDate = value["endDate"] as? String, let isFinished = value["isFinished"] as? String, let projectId = value["projectId"] as? String, let userId = value["userId"] as? String {
-				var finished: Bool
-				if isFinished == "true" {
-					finished = true
-				} else {
-					finished = false
-				}
-				let task = Task(name: name, id: id, content: content, startDate: startDate, endData: endDate, isFinished: finished, projectId: projectId, userId: userId)
+			if let name = value["name"] as? String, let id = value["id"] as? String, let content = value["content"] as? String, let startDate = value["startDate"] as? String, let endDate = value["endDate"] as? String, let isFinished = value["isFinished"] as? Bool, let projectId = value["projectId"] as? String, let userId = value["userId"] as? String {
+				let task = Task(name: name, id: id, content: content, startDate: startDate, endData: endDate, isFinished: isFinished, projectId: projectId, userId: userId)
 				completion(task)
 			}
 		}
