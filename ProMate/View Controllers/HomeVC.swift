@@ -12,7 +12,7 @@ class HomeVC: UIViewController {
 }
 
 
-// MARK: - UITableViewDragDelegate & UITableViewDataSource
-extension HomeVC: UITableViewDragDelegate, UITableViewDataSource {
+// MARK: - UITableViewDelegate & UITableViewDataSource
+extension HomeVC: UITableViewDelegate, UITableViewDataSource {
 	
 }
