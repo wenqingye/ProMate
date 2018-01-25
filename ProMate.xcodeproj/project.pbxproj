@@ -189,11 +189,11 @@
 				405D52F420184FBE00A70E16 /* LoginVC.swift */,
 				405D52F220184FBD00A70E16 /* SignupVC.swift */,
 				405D52F320184FBD00A70E16 /* HomeVC.swift */,
-				0F7692962019A43C0093F417 /* SettingVC.swift */,
 				40AD75A92019904B009EB321 /* AddProjectVC.swift */,
 				40AD75A720198B58009EB321 /* TaskVC.swift */,
 				40AD75AB2019905E009EB321 /* AddTaskVC.swift */,
 				40AD75AD20199186009EB321 /* AllUsersVC.swift */,
+				0F7692962019A43C0093F417 /* SettingVC.swift */,
 				40AD759D2019476D009EB321 /* VCCells.swift */,
 			);
 			path = "View Controllers";
@@ -244,6 +244,7 @@
 				405D52BC20184EA300A70E16 /* Resources */,
 				7AD0995DEAFD89665A248697 /* [CP] Embed Pods Frameworks */,
 				76AA7D1F7853790A0B07703D /* [CP] Copy Pods Resources */,
+				4023E995201A676600905DFF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -385,6 +386,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ProMateTests/Pods-ProMateTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		4023E995201A676600905DFF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"";
 		};
 		68DC0FD790E7C69ED6F2CA25 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
