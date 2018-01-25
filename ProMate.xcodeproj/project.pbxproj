@@ -22,7 +22,6 @@
 		405D52FB20184FE700A70E16 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405D52FA20184FE700A70E16 /* Helper.swift */; };
 		405D52FD2018577D00A70E16 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 405D52FC2018577D00A70E16 /* GoogleService-Info.plist */; };
 		40AD759E2019476D009EB321 /* VCCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AD759D2019476D009EB321 /* VCCells.swift */; };
-		40AD75A020194C52009EB321 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AD759F20194C52009EB321 /* CurrentUser.swift */; };
 		40AD75A220197076009EB321 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AD75A120197076009EB321 /* Project.swift */; };
 		40AD75A420197081009EB321 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AD75A320197081009EB321 /* Task.swift */; };
 		40AD75A820198B58009EB321 /* TaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AD75A720198B58009EB321 /* TaskVC.swift */; };
@@ -77,7 +76,6 @@
 		405D52FA20184FE700A70E16 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		405D52FC2018577D00A70E16 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		40AD759D2019476D009EB321 /* VCCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCCells.swift; sourceTree = "<group>"; };
-		40AD759F20194C52009EB321 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		40AD75A120197076009EB321 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		40AD75A320197081009EB321 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		40AD75A720198B58009EB321 /* TaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskVC.swift; sourceTree = "<group>"; };
@@ -214,7 +212,6 @@
 		405D52F120184FA000A70E16 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				40AD759F20194C52009EB321 /* CurrentUser.swift */,
 				405D52FA20184FE700A70E16 /* Helper.swift */,
 				0F581B8B2018554400794CF2 /* AccessFirebase.swift */,
 			);
@@ -560,7 +557,6 @@
 				40AD75AC2019905E009EB321 /* AddTaskVC.swift in Sources */,
 				405D52F920184FDC00A70E16 /* User.swift in Sources */,
 				405D52F720184FBE00A70E16 /* LoginVC.swift in Sources */,
-				40AD75A020194C52009EB321 /* CurrentUser.swift in Sources */,
 				40AD75AE20199186009EB321 /* AllUsersVC.swift in Sources */,
 				405D52FB20184FE700A70E16 /* Helper.swift in Sources */,
 			);

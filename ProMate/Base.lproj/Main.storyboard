@@ -238,7 +238,7 @@
         <!--Home-->
         <scene sceneID="iQ8-6K-vri">
             <objects>
-                <viewController id="b93-Ha-ETC" sceneMemberID="viewController">
+                <viewController id="b93-Ha-ETC" customClass="HomeVC" customModule="ProMate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iV3-te-Elf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -308,6 +308,9 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tblView" destination="8hy-Bn-G5H" id="qqm-bM-gfe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u7b-N1-tto" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
