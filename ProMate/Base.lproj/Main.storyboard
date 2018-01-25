@@ -407,7 +407,16 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="Add Task" id="KEc-yn-ibC">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="iP0-aj-Gov"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="iP0-aj-Gov">
+                                            <connections>
+                                                <action selector="btnCancel:" destination="v4N-gR-oFg" id="Wih-YC-h21"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="83Y-Ew-clL">
+                                            <connections>
+                                                <action selector="btnSaveTask:" destination="v4N-gR-oFg" id="SyE-rx-ftB"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -440,6 +449,9 @@
                                 <state key="normal" title="Add assignee">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnAddAssignee:" destination="v4N-gR-oFg" eventType="touchUpInside" id="147-14-34o"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ipw-E5-3yg">
                                 <rect key="frame" x="30" y="389" width="120" height="30"/>
@@ -452,6 +464,9 @@
                                 <state key="normal" title="Start date">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnStartDate:" destination="v4N-gR-oFg" eventType="touchUpInside" id="jeN-0B-xzb"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwt-xd-xDK">
                                 <rect key="frame" x="158" y="344" width="187" height="30"/>
@@ -491,6 +506,9 @@
                                 <state key="normal" title="End date">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnEndDate:" destination="v4N-gR-oFg" eventType="touchUpInside" id="la0-yQ-bPH"/>
+                                </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="uMQ-gB-Ogb">
                                 <rect key="frame" x="0.0" y="507" width="375" height="160"/>
@@ -507,9 +525,17 @@
                                     <constraint firstAttribute="height" constant="44" id="nLx-No-ACm"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem systemItem="cancel" id="R1D-am-EZS"/>
+                                    <barButtonItem systemItem="cancel" id="R1D-am-EZS">
+                                        <connections>
+                                            <action selector="btnCancelDatePicker:" destination="v4N-gR-oFg" id="xmU-YO-7Rf"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="EZY-x7-a0Q"/>
-                                    <barButtonItem systemItem="done" id="pnZ-yL-sah"/>
+                                    <barButtonItem systemItem="done" id="pnZ-yL-sah">
+                                        <connections>
+                                            <action selector="btnDoneDatePicker:" destination="v4N-gR-oFg" id="nSi-fC-zCe"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -550,6 +576,15 @@
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="assigneeNameLbl" destination="uwt-xd-xDK" id="GCD-h9-hPd"/>
+                        <outlet property="contentTextView" destination="h1B-79-Nmd" id="mME-CP-k6N"/>
+                        <outlet property="datePickerBtmConstraint" destination="VnZ-OE-iVs" id="Yco-7v-uLA"/>
+                        <outlet property="endDateLbl" destination="ZHi-Re-khJ" id="5kq-iZ-pvl"/>
+                        <outlet property="startDateLbl" destination="SEM-Pj-mL4" id="Dik-W9-Q1a"/>
+                        <outlet property="taskDatePicker" destination="uMQ-gB-Ogb" id="cLo-ss-WeU"/>
+                        <outlet property="titleTextField" destination="UlV-s1-OHO" id="rdI-dQ-pba"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ECr-6v-Q6g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
