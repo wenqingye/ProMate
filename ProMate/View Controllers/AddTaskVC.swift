@@ -21,6 +21,7 @@ class AddTaskVC: UIViewController{
     @IBOutlet weak var taskDatePicker: UIDatePicker!
     var dateType = "start"
     var curProject : Project?
+    var allUserVC : AllUsersVC?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,7 @@ class AddTaskVC: UIViewController{
         contentTextView.text = "Type task content here ..."
         contentTextView.textColor = UIColor.lightGray
         hideKeyboardWhenTappedAround()
+        allUserVC?.delegate = self
     }
 
     override func didReceiveMemoryWarning() {

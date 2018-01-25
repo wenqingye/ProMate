@@ -13,7 +13,7 @@ class HomeVC: UIViewController {
         super.viewDidLoad()
 
 		getProjects()
-		navigationItem.rightBarButtonItem?.titleTextAttributes(for: <#T##UIControlState#>)
+		navigationItem.rightBarButtonItem?.titleTextAttributes(for: )
     }
 
 	

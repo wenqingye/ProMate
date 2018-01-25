@@ -45,18 +45,22 @@ class SignupVC: UIViewController {
                         if let fireBaseUser = user{
                             let userDict = ["name" : self.nameTextField.text!,"email": email, "password" : password, "profilePic" : "", "role" : role]
                             self.databaseRef?.child(fireBaseUser.uid).updateChildValues(userDict)
-                        }
-                        TWMessageBarManager.sharedInstance().showMessage(withTitle: "Success", description: "sign up successfully", type: .info)
-                        //go to home page?
-                        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC") as? HomeVC {
-                            self.navigationController?.pushViewController(vc, animated: true)
+                            TWMessageBarManager.sharedInstance().showMessage(withTitle: "Success", description: "sign up successfully", type: .info)
+                            //upload profile image information
+                            AccessFirebase.sharedAccess.uploadImg(image: self.profileImgView.image!)
+                            //go to home page?
+                            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "InitialHome") as? UITabBarController {
+                                self.navigationController?.pushViewController(vc, animated: true)
+                            }
                         }
                     }
                 }
             }
+        }else{
+            TWMessageBarManager.sharedInstance().showMessage(withTitle: "Error", description: "Check your email address and password again", type: .error)
         }
         
-        TWMessageBarManager.sharedInstance().showMessage(withTitle: "Error", description: "Check your email address and password again", type: .error)
+        
     }
     
     @IBAction func btnAddProfileImg(_ sender: Any) {
@@ -120,6 +124,5 @@ extension SignupVC{
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         //show the picture you just choose
         self.profileImgView.image = image
-        AccessFirebase.sharedAccess.uploadImg(image: self.profileImgView.image!)
     }
 }

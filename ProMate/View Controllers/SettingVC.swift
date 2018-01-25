@@ -62,7 +62,8 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource{
             //log out
             do{
                 try Auth.auth().signOut()
-                navigationController?.popToRootViewController(animated: true)
+                
+                //navigationController?.popToRootViewController(animated: true)
                 
             }catch{
                 TWMessageBarManager.sharedInstance().showMessage(withTitle: "Error", description: error.localizedDescription, type: .error)
