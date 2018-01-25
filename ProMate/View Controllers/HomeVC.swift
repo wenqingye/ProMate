@@ -3,15 +3,20 @@ import UIKit
 
 class HomeVC: UIViewController {
 	
+	// MARK: - Properties
 	var projects: [Project] = []
 	@IBOutlet weak var tblView: UITableView!
 	
+	
+	// MARK: - ViewController LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
 		getProjects()
     }
 
+	
+	// MARK: - Methods
 	func getProjects() {
 		projects = []
 		if AccessFirebase.sharedAccess.curUserInfo?.role == "manager" {
@@ -60,5 +65,21 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
 		cell.projectNameLabel.text = project.name
 		
 		return cell
+	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		
+		// pass the selected project to task vc
+		let project = projects[indexPath.row]
+		if let vc = storyboard?.instantiateViewController(withIdentifier: "TaskVC") as? TaskVC {
+			vc.project = project
+			navigationController?.pushViewController(vc, animated: true)
+		}
+	}
+	
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		
+		tblView.estimatedRowHeight = 80
+		return UITableViewAutomaticDimension
 	}
 }

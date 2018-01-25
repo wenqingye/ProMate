@@ -6,6 +6,13 @@ class ProjectCell: UITableViewCell {
 	
 	@IBOutlet weak var projectNameLabel: UILabel!
 	@IBOutlet weak var managerNameLabel: UILabel!
+	
+	override func awakeFromNib() {
+		super.awakeFromNib()
+		
+		projectNameLabel.sizeToFit()
+		managerNameLabel.sizeToFit()
+	}
 }
 
 class TaskCell: UITableViewCell {
@@ -13,6 +20,13 @@ class TaskCell: UITableViewCell {
 	@IBOutlet weak var taskNameLabel: UILabel!
 	@IBOutlet weak var dateLabel: UILabel!
 	@IBOutlet weak var markButton: UIButton!
+	
+	override func awakeFromNib() {
+		super.awakeFromNib()
+		
+		taskNameLabel.sizeToFit()
+		dateLabel.sizeToFit()
+	}
 }
 
 class UserCell: UITableViewCell {
@@ -21,4 +35,12 @@ class UserCell: UITableViewCell {
 	@IBOutlet weak var nameLabel: UILabel!
 	@IBOutlet weak var emailLabel: UILabel!
 	@IBOutlet weak var selectButton: UIButton!
+	
+	override func awakeFromNib() {
+		super.awakeFromNib()
+		
+		profileImage.asCircle()
+		nameLabel.sizeToFit()
+		emailLabel.sizeToFit()
+	}
 }
