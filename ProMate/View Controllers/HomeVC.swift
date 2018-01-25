@@ -1,10 +1,12 @@
 
 import UIKit
+import Firebase
 
 class HomeVC: UIViewController {
 	
 	// MARK: - Properties
 	var projects: [Project] = []
+	var databaseRef: DatabaseReference?
 	@IBOutlet weak var tblView: UITableView!
 	
 	
@@ -12,12 +14,14 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+		databaseRef = Database.database().reference()
 		getProjects()
     }
 
 	
 	// MARK: - Methods
 	func getProjects() {
+		
 		projects = []
 		if AccessFirebase.sharedAccess.curUserInfo?.role == "manager" {
 			// is manager, get projects ids, get projects
@@ -51,8 +55,37 @@ class HomeVC: UIViewController {
 	// MARK: - Button Actions
 	@IBAction func didClickAddProject(_ sender: UIBarButtonItem) {
 		
+		if let curUser = AccessFirebase.sharedAccess.curUserInfo {
+			// prompt an alert box to enter project name to create a new project
+			let alertController = UIAlertController(title: "New Project Name", message: "", preferredStyle: .alert)
+			alertController.addTextField { (textfield) in
+				textfield.placeholder = "Name"
+			}
+			let saveAction = UIAlertAction(title: "Save", style: .default) { (alert) in
+				let nameTextfield = alertController.textFields![0]
+				if let name = nameTextfield.text {
+					// add new project to firebase
+					guard let projectId = self.databaseRef?.child("projects").childByAutoId().key else {
+						return
+					}
+					let projectDict = ["name": name, "id": projectId, "managerId": curUser.id] as [String: Any]
+					self.databaseRef?.child("projects").child(projectId).updateChildValues(projectDict)
+					
+					// add project to the user
+					self.databaseRef?.child("users").child(curUser.id).child("projects").updateChildValues([projectId: "1"])
+					
+					// update UI
+					let project = Project(name: name, id: projectId, tasksIds: [], managerId: curUser.id)
+					self.projects.append(project)
+					self.tblView.reloadData()
+				}
+			}
+			let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+			alertController.addAction(saveAction)
+			alertController.addAction(cancelAction)
+			present(alertController, animated: true, completion: nil)
+		}
 	}
-	
 }
 
 
