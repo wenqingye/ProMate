@@ -16,11 +16,17 @@ class HomeVC: UIViewController {
 
 		databaseRef = Database.database().reference()
 		getProjects()
-		navigationItem.rightBarButtonItem?.titleTextAttributes(for: )
     }
 
 	
 	// MARK: - Methods
+	func setupUI() {
+		// if is developer, don't show the add project button
+		if AccessFirebase.sharedAccess.curUserInfo?.role != "manager" {
+			navigationItem.rightBarButtonItem = nil
+		}
+	}
+	
 	func getProjects() {
 		
 		projects = []

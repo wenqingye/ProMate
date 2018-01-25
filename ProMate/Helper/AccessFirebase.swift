@@ -48,6 +48,13 @@ class AccessFirebase : NSObject{
         })
     }
 	
+	// reset current user info to nil
+	func resetCurUserInfo() {
+		curUserInfo = nil
+		curUserTasks = []
+		curUserProjects = []
+	}
+	
 	// get project object by project id
 	func getProject(id: String, completion: @escaping projectCompletionHandler) {
 		databaseRef.child("projects").child(id).observeSingleEvent(of: .value) { (snapshot) in

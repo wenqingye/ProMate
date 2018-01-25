@@ -43,6 +43,23 @@ class SettingVC: UIViewController {
         }
     }
 
+	func destroyToLogin() {
+		guard let window = UIApplication.shared.keyWindow else {
+			return
+		}
+		guard let rootViewController = window.rootViewController else {
+			return
+		}
+		let vc = storyboard?.instantiateViewController(withIdentifier: "InitialLogin") as! UINavigationController
+		vc.view.frame = rootViewController.view.frame
+		vc.view.layoutIfNeeded()
+		
+		UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
+			window.rootViewController = vc
+		}) { (completed) in
+			rootViewController.dismiss(animated: true, completion: nil)
+		}
+	}
 }
 
 extension SettingVC: UITableViewDelegate, UITableViewDataSource{
@@ -63,8 +80,8 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource{
             do{
                 try Auth.auth().signOut()
                 
-                //navigationController?.popToRootViewController(animated: true)
-                
+				destroyToLogin()
+                AccessFirebase.sharedAccess.resetCurUserInfo()
             }catch{
                 TWMessageBarManager.sharedInstance().showMessage(withTitle: "Error", description: error.localizedDescription, type: .error)
             }

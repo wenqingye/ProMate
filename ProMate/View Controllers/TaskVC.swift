@@ -31,6 +31,10 @@ class TaskVC: UIViewController {
 		managerProfileImage.asCircle()
 		managerNameLabel.sizeToFit()
 		navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "addWhiteButton"), style: .done, target: nil, action: #selector (didClickAddTask))
+		// if is developer, don't show the add task button
+		if AccessFirebase.sharedAccess.curUserInfo?.role != "manager" {
+			navigationItem.rightBarButtonItem = nil
+		}
 	}
 	
 	func fillInfo() {
@@ -113,4 +117,14 @@ extension TaskVC: UITableViewDelegate, UITableViewDataSource {
 		tblView.estimatedRowHeight = 80
 		return UITableViewAutomaticDimension
 	}
+}
+
+
+// MARK: - AddNewTask
+extension TaskVC: AddNewTask {
+	
+	func didAddNewTask(newTask: Task) {
+		tasks.append(newTask)
+		tblView.reloadData()
+	}	
 }

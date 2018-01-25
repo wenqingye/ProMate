@@ -33,6 +33,10 @@ class LoginVC: UIViewController {
 				if let error = error {
 					TWMessageBarManager.sharedInstance().showMessage(withTitle: "Warning", description: error.localizedDescription, type: TWMessageBarMessageType.error)
 				} else {
+					// add current user info
+					AccessFirebase.sharedAccess.getCurUserInfo(completion: { (_) in
+						print(error?.localizedDescription)
+					})
 					if let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC") as? HomeVC {
 						self.navigationController?.pushViewController(vc, animated: true)
 					}
