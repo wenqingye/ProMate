@@ -51,6 +51,7 @@ class HomeVC: UIViewController {
 	
 	// MARK: - Button Actions
 	@IBAction func didClickAddProject(_ sender: UIBarButtonItem) {
+		
 	}
 	
 }

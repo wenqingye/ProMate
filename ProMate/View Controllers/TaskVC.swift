@@ -30,9 +30,11 @@ class TaskVC: UIViewController {
 		projectNameLabel.sizeToFit()
 		managerProfileImage.asCircle()
 		managerNameLabel.sizeToFit()
+		navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "addWhiteButton"), style: .done, target: nil, action: #selector (didClickAddTask))
 	}
 	
 	func fillInfo() {
+		
 		// get manager info by the project manager id
 		if let project = project {
 			projectNameLabel.text = project.name
@@ -54,6 +56,7 @@ class TaskVC: UIViewController {
 	}
 	
 	func getTasks() {
+		
 		// get tasks object by project tasks ids
 		if let project = project {
 			let tasksIds = project.tasksIds
@@ -64,6 +67,14 @@ class TaskVC: UIViewController {
 					self.tblView.reloadData()
 				})
 			}
+		}
+	}
+	
+	
+	// MARK: - Button Actions
+	@objc func didClickAddTask() {
+		if let vc = storyboard?.instantiateViewController(withIdentifier: "AddTaskVC") as? AddTaskVC {
+			navigationController?.pushViewController(vc, animated: true)
 		}
 	}
 }
