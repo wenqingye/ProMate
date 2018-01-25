@@ -58,7 +58,6 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
 		let project = projects[indexPath.row]
 		
 		cell.projectNameLabel.text = project.name
-		cell.managerNameLabel.text = 
 		
 		return cell
 	}

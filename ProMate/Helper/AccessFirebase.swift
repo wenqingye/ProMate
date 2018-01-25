@@ -57,7 +57,7 @@ class AccessFirebase : NSObject{
 			}
 			if let name = value["name"] as? String, let id = value["id"] as? String, let managerName = value["managerName"] as? String, let managerId = value["managerId"] as? String, let tasks = value["tasks"] as? [String: Any] {
 				let tasksIds = Array(tasks.keys)
-				let project = Project(name: name, id: id, tasksIds: tasksIds, managerId: managerId, manageName: managerName)
+				let project = Project(name: name, id: id, tasksIds: tasksIds, managerId: managerId)
 				completion(project)
 			}
 		}
@@ -69,14 +69,14 @@ class AccessFirebase : NSObject{
 			guard let value = snapshot.value as? [String: Any] else {
 				return
 			}
-			if let name = value["name"] as? String, let id = value["id"] as? String, let content = value["content"] as? String, let startDate = value["startDate"] as? String, let endDate = value["endDate"] as? String, let isFinished = value["isFinished"] as? String, let projectId = value["projectId"] as? String {
+			if let name = value["name"] as? String, let id = value["id"] as? String, let content = value["content"] as? String, let startDate = value["startDate"] as? String, let endDate = value["endDate"] as? String, let isFinished = value["isFinished"] as? String, let projectId = value["projectId"] as? String, let userId = value["userId"] as? String {
 				var finished: Bool
 				if isFinished == "true" {
 					finished = true
 				} else {
 					finished = false
 				}
-				let task = Task(name: name, id: id, content: content, startDate: startDate, endData: endDate, isFinished: finished, projectId: projectId)
+				let task = Task(name: name, id: id, content: content, startDate: startDate, endData: endDate, isFinished: finished, projectId: projectId, userId: userId)
 				completion(task)
 			}
 		}
