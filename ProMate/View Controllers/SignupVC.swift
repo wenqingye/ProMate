@@ -27,6 +27,8 @@ class SignupVC: UIViewController {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         confirmPswTextField.delegate = self
+        
+        hideKeyboardWhenTappedAround()
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,6 +51,8 @@ class SignupVC: UIViewController {
                             //upload profile image information
                             AccessFirebase.sharedAccess.uploadImg(image: self.profileImgView.image!)
                             //go to home page?
+                            AccessFirebase.sharedAccess.getCurUserInfo(){ res in
+                            }
                             if let vc = self.storyboard?.instantiateViewController(withIdentifier: "InitialHome") as? UITabBarController {
                                 self.navigationController?.pushViewController(vc, animated: true)
                             }

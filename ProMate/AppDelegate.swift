@@ -25,12 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			}
 		} else {
 			// add current user info
-			AccessFirebase.sharedAccess.getCurUserInfo(completion: { (_) in
-				
-			})
-			if let homeVC: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "InitialHome") as? UITabBarController {
-				self.window?.rootViewController = homeVC
-			}
+            if let homeVC: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "InitialHome") as? UITabBarController {
+                self.window?.rootViewController = homeVC
+                self.window?.makeKeyAndVisible()
+            }
 		}
 		self.window?.makeKeyAndVisible()
 		

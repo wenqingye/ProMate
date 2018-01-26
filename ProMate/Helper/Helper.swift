@@ -72,7 +72,7 @@ extension UIViewController : UIImagePickerControllerDelegate, UINavigationContro
 class ReadData:NSObject {
     class func parseUserData(value : Dictionary<String, Any>, uid : String) -> User?{
         var oneUser : User?
-        if let name = value["name"] as? String, let email = value["email"] as? String, let role = value["role"] as? String, let imgUrl = value["profilepic"] as? String{
+        if let name = value["name"] as? String, let email = value["email"] as? String, let role = value["role"] as? String, let imgUrl = value["profilePic"] as? String{
             oneUser = User(name: name, email: email, id: uid, role: role, profilePic: imgUrl)
         }
         return oneUser
