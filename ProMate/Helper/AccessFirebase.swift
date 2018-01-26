@@ -56,15 +56,6 @@ class AccessFirebase : NSObject{
 		curUserProjects = []
 	}
     
-    func getProject2(pid : String, completion : @escaping completionHandler){
-        databaseRef.child("projects").child(pid).observeSingleEvent(of: .value, with: {(snapshot) in
-            guard let value = snapshot.value as? Dictionary<String,Any> else{
-                return
-            }
-            completion("okay")
-            
-        })
-    }
 	
 	// get project object by project id
 	func getProject(id: String, completion: @escaping projectCompletionHandler) {
