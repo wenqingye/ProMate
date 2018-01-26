@@ -95,7 +95,7 @@ class AccessFirebase : NSObject{
 			guard let value = snapshot.value as? [String: Any] else {
 				return
 			}
-			if let name = value["name"] as? String, let email = value["email"] as? String, let id = value["id"] as? String, let role = value["role"] as? String, let profilePic = value["profilePic"] as? String {
+			if let name = value["name"] as? String, let email = value["email"] as? String, let role = value["role"] as? String, let profilePic = value["profilePic"] as? String {
 				let user = User(name: name, email: email, id: id, role: role, profilePic: profilePic)
 				completion(user)
 			}

@@ -8,7 +8,8 @@ class HomeVC: UIViewController {
 	var projects: [Project] = []
 	var databaseRef: DatabaseReference?
 	@IBOutlet weak var tblView: UITableView!
-	
+	//for developer, user dict map project to task assigned to current developer
+    var taskDict = [String : [String]]()
 	
 	// MARK: - ViewController LifeCycle
     override func viewDidLoad() {
@@ -63,6 +64,14 @@ class HomeVC: UIViewController {
 						let projectId = task.projectId
 						AccessFirebase.sharedAccess.getProject(id: projectId, completion: { (project) in
 							self.projects.append(project)
+                            if let taskArr = self.taskDict[projectId]{
+                                var newArr = taskArr
+                                newArr.append(taskId)
+                                self.taskDict[projectId] = newArr
+                            }else{
+                                self.taskDict[projectId] = [taskId]
+                            }
+                            
 							self.tblView.reloadData()
 						})
 					})
@@ -135,6 +144,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
 		let project = projects[indexPath.row]
 		if let vc = storyboard?.instantiateViewController(withIdentifier: "TaskVC") as? TaskVC {
 			vc.project = project
+            vc.developerTasks = taskDict[project.id]
 			navigationController?.pushViewController(vc, animated: true)
 		}
 	}

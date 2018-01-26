@@ -8,6 +8,7 @@ class TaskVC: UIViewController {
 	// MARK: - Properties
 	var project: Project?
 	var tasks: [Task] = []
+    var developerTasks : [String]?
 	var databaseRef: DatabaseReference?
 	@IBOutlet weak var projectNameLabel: UILabel!
 	@IBOutlet weak var managerProfileImage: UIImageView!
@@ -24,7 +25,7 @@ class TaskVC: UIViewController {
         tblView.dataSource = self
         setupUI()
 		fillInfo()
-		getTasks()
+		setupTasks()
     }
 	
 	
@@ -66,20 +67,34 @@ class TaskVC: UIViewController {
 		}
 	}
 	
-	func getTasks() {
-		
-		// get tasks object by project tasks ids
-		if let project = project {
-			let tasksIds = project.tasksIds
-			for taskId in tasksIds {
-				// get task object by id
-				AccessFirebase.sharedAccess.getTask(id: taskId, completion: { (task) in
-					self.tasks.append(task)
-					self.tblView.reloadData()
-				})
-			}
-		}
-	}
+    func getTasks(tasksIds : [String]) {
+
+        // get tasks object by project tasks ids
+        
+            for taskId in tasksIds {
+                // get task object by id
+                AccessFirebase.sharedAccess.getTask(id: taskId, completion: { (task) in
+                    self.tasks.append(task)
+                    self.tblView.reloadData()
+                })
+            }
+    }
+    
+    func setupTasks(){
+        //first check the role of current user
+        if let curUser = AccessFirebase.sharedAccess.curUserInfo{
+            if curUser.role == "manager"{
+               // getTasks()
+                if let project = project{
+                    self.getTasks(tasksIds: project.tasksIds)
+                }
+            }else if curUser.role == "developer"{
+                if let tasks = self.developerTasks{
+                    self.getTasks(tasksIds: tasks)
+                }
+            }
+        }
+    }
 	
 	
 	// MARK: - Button Actions
@@ -88,7 +103,8 @@ class TaskVC: UIViewController {
 		if let vc = storyboard?.instantiateViewController(withIdentifier: "AddTaskVC") as? AddTaskVC {
 			vc.delegate = self
             vc.curProject = self.project
-            navigationController?.present(vc, animated: true, completion: nil)
+            navigationController?.pushViewController(vc, animated: true)
+            //navigationController?.present(vc, animated: true, completion: nil)
 		}
 	}
 	
