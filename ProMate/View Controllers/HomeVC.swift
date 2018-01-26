@@ -18,17 +18,19 @@ class HomeVC: UIViewController {
         tblView.delegate = self
         tblView.dataSource = self
         setUpInfo()
-		//getProjects()
     }
 
 	
 	// MARK: - Methods
 	func setupUI() {
+		
+		navigationItem.title = "Home"
 		// if is developer, don't show the add project button
 		if AccessFirebase.sharedAccess.curUserInfo?.role != "manager" {
 			navigationItem.rightBarButtonItem = nil
 		}
 	}
+		
     
     func setUpInfo(){
         if AccessFirebase.sharedAccess.curUserInfo == nil{
@@ -135,6 +137,9 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
 		let project = projects[indexPath.row]
 		if let vc = storyboard?.instantiateViewController(withIdentifier: "TaskVC") as? TaskVC {
 			vc.project = project
+			let backBarButton = UIBarButtonItem(image: UIImage(named: "backWhiteButton"), style: .plain, target: nil, action: nil)
+			backBarButton.tintColor = .white
+			navigationItem.backBarButtonItem = backBarButton
 			navigationController?.pushViewController(vc, animated: true)
 		}
 	}

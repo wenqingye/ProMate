@@ -35,11 +35,12 @@ class TaskVC: UIViewController {
 		projectNameLabel.sizeToFit()
 		managerProfileImage.asCircle()
 		managerNameLabel.sizeToFit()
-		let rightBarButton = UIBarButtonItem(image: UIImage(named: "addWhiteButton"), style: .done, target: self, action: #selector (didClickAddTask))
+		
+		let rightBarButton = UIBarButtonItem(image: UIImage(named: "addWhiteButton"), style: .plain, target: self, action: #selector (didClickAddTask))
 		rightBarButton.tintColor = .white
-		navigationItem.rightBarButtonItem = rightBarButton
-		// if is developer, don't show the add task button
-		if AccessFirebase.sharedAccess.curUserInfo?.role != "manager" {
+		if AccessFirebase.sharedAccess.curUserInfo?.role == "manager" {
+			navigationItem.rightBarButtonItem = rightBarButton
+		} else {
 			navigationItem.rightBarButtonItem = nil
 		}
 	}
