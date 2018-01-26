@@ -30,9 +30,9 @@ class HomeVC: UIViewController {
     
     func setUpInfo(){
         if AccessFirebase.sharedAccess.curUserInfo == nil{
-            AccessFirebase.sharedAccess.getCurUserInfo(completion: { (res) in
+            AccessFirebase.sharedAccess.getCurUserInfo(){ (res) in
                 self.getProjects()
-            })
+            }
         }else{
             self.getProjects()
         }
@@ -46,10 +46,10 @@ class HomeVC: UIViewController {
 			if let projectsIds = AccessFirebase.sharedAccess.curUserProjects {
 				for projectId in projectsIds {
 					// for each project id, get project object
-					AccessFirebase.sharedAccess.getProject(id: projectId, completion: { (project) in
-						self.projects.append(project)
+                      AccessFirebase.sharedAccess.getProject2(pid: projectId){ (project) in
+						//self.projects.append(project)
 						self.tblView.reloadData()
-					})
+					}
 				}
 			}
 		} else {
