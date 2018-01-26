@@ -62,10 +62,16 @@ class AccessFirebase : NSObject{
 			guard let value = snapshot.value as? [String: Any] else {
 				return
 			}
-			if let name = value["name"] as? String, let id = value["id"] as? String, let managerId = value["managerId"] as? String, let tasks = value["tasks"] as? [String: Any] {
-				let tasksIds = Array(tasks.keys)
-				let project = Project(name: name, id: id, tasksIds: tasksIds, managerId: managerId)
-				completion(project)
+			if let name = value["name"] as? String, let id = value["id"] as? String, let managerId = value["managerId"] as? String {
+				if let tasks = value["tasks"] as? [String: Any] {
+					let tasksIds = Array(tasks.keys)
+					let project = Project(name: name, id: id, tasksIds: tasksIds, managerId: managerId)
+					completion(project)
+				} else {
+					let project = Project(name: name, id: id, tasksIds: [], managerId: managerId)
+					completion(project)
+				}
+				
 			}
 		})
 	}

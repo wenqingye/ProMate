@@ -37,7 +37,7 @@ class LoginVC: UIViewController {
 					AccessFirebase.sharedAccess.getCurUserInfo(completion: { (_) in
 						print(error?.localizedDescription)
 					})
-					if let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC") as? HomeVC {
+					if let vc = self.storyboard?.instantiateViewController(withIdentifier: "InitialHome") as? UITabBarController {
 						self.navigationController?.pushViewController(vc, animated: true)
 					}
 				}
