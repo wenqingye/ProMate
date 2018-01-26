@@ -21,8 +21,7 @@ class SettingVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        settingTblView.delegate = self
-        settingTblView.dataSource = self
+        settingTblView.tableFooterView = UIView()
         setUpUserInfo()
     }
 

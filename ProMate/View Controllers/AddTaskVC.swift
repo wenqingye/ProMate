@@ -27,8 +27,6 @@ class AddTaskVC: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        contentTextView.delegate = self
-        titleTextField.delegate = self
         contentTextView.text = "Type task content here ..."
         contentTextView.textColor = UIColor.lightGray
         databaseRef = Database.database().reference()
