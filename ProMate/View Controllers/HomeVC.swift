@@ -20,6 +20,7 @@ class HomeVC: UIViewController {
 		databaseRef = Database.database().reference()
 		
         setUpInfo()
+        
     }
 
     
@@ -35,6 +36,7 @@ class HomeVC: UIViewController {
         
     
     func setUpInfo(){
+		
         if AccessFirebase.sharedAccess.curUserInfo == nil{
             AccessFirebase.sharedAccess.getCurUserInfo(){ (res) in
                 self.getProjects()
@@ -154,6 +156,4 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(vc, animated: true)
         }
     }
-    
-    
 }

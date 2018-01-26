@@ -71,17 +71,17 @@ class TaskVC: UIViewController {
     func getTasks(tasksIds : [String]) {
 
         // get tasks object by project tasks ids
-        
-            for taskId in tasksIds {
-                // get task object by id
-                AccessFirebase.sharedAccess.getTask(id: taskId, completion: { (task) in
-                    self.tasks.append(task)
-                    self.tblView.reloadData()
-                })
-            }
+		for taskId in tasksIds {
+			// get task object by id
+			AccessFirebase.sharedAccess.getTask(id: taskId, completion: { (task) in
+				self.tasks.append(task)
+				self.tblView.reloadData()
+			})
+		}
     }
     
     func setupTasks(){
+		
         //first check the role of current user
         if let curUser = AccessFirebase.sharedAccess.curUserInfo{
             if curUser.role == "manager"{
