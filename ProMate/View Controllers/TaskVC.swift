@@ -20,9 +20,9 @@ class TaskVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        databaseRef = Database.database().reference()
-        tblView.delegate = self
-        tblView.dataSource = self
+		tblView.estimatedRowHeight = 80
+		tblView.rowHeight = UITableViewAutomaticDimension
+		databaseRef = Database.database().reference()
         setupUI()
         fillInfo()
         setupTasks()
@@ -71,17 +71,17 @@ class TaskVC: UIViewController {
     func getTasks(tasksIds : [String]) {
 
         // get tasks object by project tasks ids
-        
-            for taskId in tasksIds {
-                // get task object by id
-                AccessFirebase.sharedAccess.getTask(id: taskId, completion: { (task) in
-                    self.tasks.append(task)
-                    self.tblView.reloadData()
-                })
-            }
+		for taskId in tasksIds {
+			// get task object by id
+			AccessFirebase.sharedAccess.getTask(id: taskId, completion: { (task) in
+				self.tasks.append(task)
+				self.tblView.reloadData()
+			})
+		}
     }
     
     func setupTasks(){
+		
         //first check the role of current user
         if let curUser = AccessFirebase.sharedAccess.curUserInfo{
             if curUser.role == "manager"{
@@ -127,43 +127,37 @@ class TaskVC: UIViewController {
 
 // MARK: - UITableViewDelegate & UITableViewDataSource
 extension TaskVC: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return tasks.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell") as! TaskCell
-        let task = tasks[indexPath.row]
-        
-        cell.taskNameLabel.text = task.name
-        cell.dateLabel.text = "\(task.startDate) - \(task.endData)"
-        if task.isFinished == true {
-            cell.markButton.isSelected = true
-        } else {
-            cell.markButton.isSelected = false
-        }
-        cell.markButton.tag = indexPath.row
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let task = tasks[indexPath.row]
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "TaskDetailsVC") as? TaskDetailsVC {
-            vc.task = task
-            navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        tblView.estimatedRowHeight = 80
-        return UITableViewAutomaticDimension
-    }
+	
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		
+		return tasks.count
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		
+		let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell") as! TaskCell
+		let task = tasks[indexPath.row]
+		
+		cell.taskNameLabel.text = task.name
+		cell.dateLabel.text = "\(task.startDate) - \(task.endData)"
+		if task.isFinished == true {
+			cell.markButton.isSelected = true
+		} else {
+			cell.markButton.isSelected = false
+		}
+		cell.markButton.tag = indexPath.row
+		
+		return cell
+	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		
+		let task = tasks[indexPath.row]
+		if let vc = storyboard?.instantiateViewController(withIdentifier: "TaskDetailsVC") as? TaskDetailsVC {
+			vc.task = task
+			navigationController?.pushViewController(vc, animated: true)
+		}
+	}
 }
 
 
