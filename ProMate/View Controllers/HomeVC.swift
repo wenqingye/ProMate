@@ -13,12 +13,12 @@ class HomeVC: UIViewController {
 	// MARK: - ViewController LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+		
 		tblView.estimatedRowHeight = 65
 		tblView.rowHeight = UITableViewAutomaticDimension
 		databaseRef = Database.database().reference()
 		
         setUpInfo()
-		
     }
 
 	
