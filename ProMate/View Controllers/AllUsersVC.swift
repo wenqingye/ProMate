@@ -80,5 +80,6 @@ extension AllUsersVC : UITableViewDelegate, UITableViewDataSource{
         //update the user info, and the task info
         //send this info back to add task vc
         delegate?.didAddNewAssignee(user: choosedUser)
+        dismiss(animated: true, completion: nil)
     }
 }
