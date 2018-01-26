@@ -55,6 +55,7 @@ class AccessFirebase : NSObject{
 		curUserTasks = []
 		curUserProjects = []
 	}
+    
 	
 	// get project object by project id
 	func getProject(id: String, completion: @escaping projectCompletionHandler) {
