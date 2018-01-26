@@ -24,6 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				self.window?.rootViewController = loginVC
 			}
 		} else {
+			// add current user info
+			AccessFirebase.sharedAccess.getCurUserInfo(completion: { (_) in
+				
+			})
 			if let homeVC: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "InitialHome") as? UITabBarController {
 				self.window?.rootViewController = homeVC
 			}
