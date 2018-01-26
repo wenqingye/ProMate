@@ -193,7 +193,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ijo-j1-saG">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfileImg" translatesAutoresizingMaskIntoConstraints="NO" id="ijo-j1-saG">
                                 <rect key="frame" x="147.5" y="74" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="AGg-5N-jCA"/>
@@ -390,7 +390,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SnJ-Se-5SK">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfileImg" translatesAutoresizingMaskIntoConstraints="NO" id="SnJ-Se-5SK">
                                         <rect key="frame" x="30" y="49" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="4BH-Om-4ob"/>

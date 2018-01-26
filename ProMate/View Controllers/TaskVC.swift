@@ -19,6 +19,8 @@ class TaskVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+		tblView.estimatedRowHeight = 80
+		tblView.rowHeight = UITableViewAutomaticDimension
 		databaseRef = Database.database().reference()
         setupUI()
 		fillInfo()
@@ -141,12 +143,6 @@ extension TaskVC: UITableViewDelegate, UITableViewDataSource {
 			vc.task = task
 			navigationController?.pushViewController(vc, animated: true)
 		}
-	}
-	
-	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		
-		tblView.estimatedRowHeight = 80
-		return UITableViewAutomaticDimension
 	}
 }
 
