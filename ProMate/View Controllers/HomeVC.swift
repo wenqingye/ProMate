@@ -30,6 +30,7 @@ class HomeVC: UIViewController {
 	func getProjects() {
 		
 		projects = []
+		print(AccessFirebase.sharedAccess.curUserInfo?.role)
 		if AccessFirebase.sharedAccess.curUserInfo?.role == "manager" {
 			// is manager, get projects ids, get projects
 			if let projectsIds = AccessFirebase.sharedAccess.curUserProjects {

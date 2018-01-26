@@ -70,7 +70,6 @@ class AccessFirebase : NSObject{
 					let project = Project(name: name, id: id, tasksIds: [], managerId: managerId)
 					completion(project)
 				}
-				
 			}
 		}
 	}

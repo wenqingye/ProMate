@@ -292,6 +292,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="b93-Ha-ETC" id="dQL-Uo-NQs"/>
+                                    <outlet property="delegate" destination="b93-Ha-ETC" id="0wD-gB-pd1"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -382,6 +386,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ycy-2c-7UW" id="sjm-D0-uMg"/>
+                                    <outlet property="delegate" destination="ycy-2c-7UW" id="3Dt-4g-WIL"/>
+                                </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="33T-ME-oD3">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="109"/>
