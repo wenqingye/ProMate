@@ -43,7 +43,6 @@ class HomeVC: UIViewController {
 	func getProjects() {
 		
 		projects = []
-		print(AccessFirebase.sharedAccess.curUserInfo?.role)
 		if AccessFirebase.sharedAccess.curUserInfo?.role == "manager" {
 			// is manager, get projects ids, get projects
 			if let projectsIds = AccessFirebase.sharedAccess.curUserProjects {
@@ -142,7 +141,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		
-		tblView.estimatedRowHeight = 80
+		tblView.estimatedRowHeight = 65
 		return UITableViewAutomaticDimension
 	}
 }

@@ -5,13 +5,11 @@ import UIKit
 class ProjectCell: UITableViewCell {
 	
 	@IBOutlet weak var projectNameLabel: UILabel!
-	@IBOutlet weak var managerNameLabel: UILabel!
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		
 		projectNameLabel.sizeToFit()
-		managerNameLabel.sizeToFit()
 	}
 }
 

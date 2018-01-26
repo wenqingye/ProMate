@@ -35,7 +35,9 @@ class TaskVC: UIViewController {
 		projectNameLabel.sizeToFit()
 		managerProfileImage.asCircle()
 		managerNameLabel.sizeToFit()
-		navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "addWhiteButton"), style: .done, target: nil, action: #selector (didClickAddTask))
+		let rightBarButton = UIBarButtonItem(image: UIImage(named: "addWhiteButton"), style: .done, target: self, action: #selector (didClickAddTask))
+		rightBarButton.tintColor = .white
+		navigationItem.rightBarButtonItem = rightBarButton
 		// if is developer, don't show the add task button
 		if AccessFirebase.sharedAccess.curUserInfo?.role != "manager" {
 			navigationItem.rightBarButtonItem = nil
@@ -84,7 +86,7 @@ class TaskVC: UIViewController {
 	@objc func didClickAddTask() {
 		
 		if let vc = storyboard?.instantiateViewController(withIdentifier: "AddTaskVC") as? AddTaskVC {
-			navigationController?.pushViewController(vc, animated: true)
+			navigationController?.present(vc, animated: true, completion: nil)
 		}
 	}
 	

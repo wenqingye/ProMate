@@ -76,14 +76,14 @@ class AddTaskVC: UIViewController{
     
         //send task info back
         delegate?.didAddNewTask(newTask: newTask)
-        //pop view controller
-        navigationController?.popViewController(animated: true)
+        //dismiss view controller
+		dismiss(animated: true, completion: nil)
     }
     
     
     @IBAction func btnCancel(_ sender: Any) {
         //back
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     
