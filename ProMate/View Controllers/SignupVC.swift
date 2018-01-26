@@ -13,7 +13,8 @@ class SignupVC: UIViewController {
     @IBOutlet weak var confirmPswTextField: UITextField!
     @IBOutlet weak var btnManager: UIButton!
     @IBOutlet weak var btnDeveloper: UIButton!
-    
+	@IBOutlet weak var profilePicButton: UIButton!
+	
     var databaseRef: DatabaseReference?
     var storageRef : StorageReference?
     var userRole : String?
@@ -29,6 +30,7 @@ class SignupVC: UIViewController {
         confirmPswTextField.delegate = self
 		
 		profileImgView.asCircle()
+		profilePicButton.asCircle()
         
         hideKeyboardWhenTappedAround()
     }

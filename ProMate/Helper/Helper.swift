@@ -7,6 +7,11 @@ extension UIButton {
 		self.layer.cornerRadius = 5
 		self.layer.masksToBounds = true
 	}
+	
+	func asCircle() {
+		self.layer.cornerRadius = self.frame.width / 2
+		self.layer.masksToBounds = true
+	}
 }
 
 extension UIImageView {
