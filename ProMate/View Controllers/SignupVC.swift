@@ -27,6 +27,8 @@ class SignupVC: UIViewController {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         confirmPswTextField.delegate = self
+        
+        hideKeyboardWhenTappedAround()
     }
 
     override func didReceiveMemoryWarning() {

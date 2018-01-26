@@ -31,15 +31,27 @@ class SettingVC: UIViewController {
     }
     
     func setUpUserInfo(){
-        let curUser = AccessFirebase.sharedAccess.curUserInfo
+        var curUser = AccessFirebase.sharedAccess.curUserInfo
         if curUser == nil{
             AccessFirebase.sharedAccess.getCurUserInfo(){ (res) in
+                curUser = AccessFirebase.sharedAccess.curUserInfo
+                self.setDetailProfile(curUser: curUser!)
             }
+        }else{
+            setDetailProfile(curUser: curUser!)
         }
-        if let userName = curUser?.name, let img = curUser?.profilePic{
-            userInfo.text = userName
+        
+    }
+    
+    func setDetailProfile(curUser : User){
+      
+        userInfo.text = curUser.name
+        let img = curUser.profilePic
+        if img != ""{
             let url = URL(string : img)
             profileImg.sd_setImage(with: url!, completed: nil)
+        }else{
+            profileImg.image = UIImage(named : "defaultProfileImg")
         }
     }
 

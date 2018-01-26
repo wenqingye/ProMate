@@ -15,7 +15,8 @@ class HomeVC: UIViewController {
         super.viewDidLoad()
 
 		databaseRef = Database.database().reference()
-		getProjects()
+        setUpInfo()
+		//getProjects()
     }
 
 	
@@ -26,6 +27,16 @@ class HomeVC: UIViewController {
 			navigationItem.rightBarButtonItem = nil
 		}
 	}
+    
+    func setUpInfo(){
+        if AccessFirebase.sharedAccess.curUserInfo == nil{
+            AccessFirebase.sharedAccess.getCurUserInfo(completion: { (res) in
+                self.getProjects()
+            })
+        }else{
+            self.getProjects()
+        }
+    }
 	
 	func getProjects() {
 		
@@ -84,7 +95,9 @@ class HomeVC: UIViewController {
 					// update UI
 					let project = Project(name: name, id: projectId, tasksIds: [], managerId: curUser.id)
 					self.projects.append(project)
-					self.tblView.reloadData()
+                    DispatchQueue.main.async {
+                        self.tblView.reloadData()
+                    }
 				}
 			}
 			let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)

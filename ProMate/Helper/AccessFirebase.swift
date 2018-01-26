@@ -29,7 +29,7 @@ class AccessFirebase : NSObject{
         curUserProjects = [String]()
         
         let uid = Auth.auth().currentUser?.uid
-        databaseRef.child(uid!).observeSingleEvent(of: .value, with : {(snapshot) in
+        databaseRef.child("users").child(uid!).observeSingleEvent(of: .value, with : {(snapshot) in
             guard let value = snapshot.value as? Dictionary<String,Any> else{
                 completion("error")
                 return
@@ -45,6 +45,7 @@ class AccessFirebase : NSObject{
             if let tasks = value["tasks"] as? [String : String]{
                 self.curUserTasks = Array(tasks.keys)
             }
+            completion("success")
         })
     }
 	
@@ -57,7 +58,7 @@ class AccessFirebase : NSObject{
 	
 	// get project object by project id
 	func getProject(id: String, completion: @escaping projectCompletionHandler) {
-		databaseRef.child("projects").child(id).observeSingleEvent(of: .value) { (snapshot) in
+        databaseRef.child("projects").child(id).observeSingleEvent(of: .value, with : { (snapshot) in
 			guard let value = snapshot.value as? [String: Any] else {
 				return
 			}
@@ -66,7 +67,7 @@ class AccessFirebase : NSObject{
 				let project = Project(name: name, id: id, tasksIds: tasksIds, managerId: managerId)
 				completion(project)
 			}
-		}
+		})
 	}
 	
 	// get task object by task id
