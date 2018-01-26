@@ -62,12 +62,13 @@ class AddTaskVC: UIViewController{
             dict["projectId"] = oneProject.id
             newTask.projectId = oneProject.id
         }
-        dict["idFinished"] = false
+        dict["isFinished"] = false
         dict["userId"] = newTask.id
         //update database/
         //task
         let key = databaseRef?.child("tasks").childByAutoId().key
         databaseRef?.child("tasks").child(key!).updateChildValues(dict)
+        databaseRef?.child("projects").child((curProject?.id)!).child("tasks").updateChildValues([key! : "1"])
         //update user info if assign an developer
         if !newTask.userId.isEmpty && newTask.userId != ""{
             let taskDict = [key! : "1"]
@@ -91,7 +92,8 @@ class AddTaskVC: UIViewController{
         //add assignee, go to all users vc and choose one user
         if let controller = storyboard?.instantiateViewController(withIdentifier: "AllUsersVC") as? AllUsersVC{
             controller.delegate = self
-            navigationController?.pushViewController(controller, animated: true)
+            navigationController?.present(controller, animated: true, completion: nil)
+//            navigationController?.pushViewController(controller, animated: true)
         }
     }
     

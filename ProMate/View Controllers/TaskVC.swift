@@ -87,7 +87,9 @@ class TaskVC: UIViewController {
 	@objc func didClickAddTask() {
 		
 		if let vc = storyboard?.instantiateViewController(withIdentifier: "AddTaskVC") as? AddTaskVC {
-			navigationController?.present(vc, animated: true, completion: nil)
+			vc.delegate = self
+            vc.curProject = self.project
+            navigationController?.present(vc, animated: true, completion: nil)
 		}
 	}
 	
