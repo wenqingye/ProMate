@@ -80,6 +80,8 @@ class TaskVC: UIViewController {
 				})
 			}
 		}
+		
+		// if is developer
 	}
 	
 	

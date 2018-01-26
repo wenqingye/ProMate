@@ -13,11 +13,12 @@ class HomeVC: UIViewController {
 	// MARK: - ViewController LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+		tblView.estimatedRowHeight = 65
+		tblView.rowHeight = UITableViewAutomaticDimension
 		databaseRef = Database.database().reference()
-        tblView.delegate = self
-        tblView.dataSource = self
+		
         setUpInfo()
+		
     }
 
 	
@@ -144,9 +145,5 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
 		}
 	}
 	
-	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		
-		tblView.estimatedRowHeight = 65
-		return UITableViewAutomaticDimension
-	}
+	
 }
