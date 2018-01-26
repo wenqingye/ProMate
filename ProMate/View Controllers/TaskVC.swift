@@ -20,6 +20,8 @@ class TaskVC: UIViewController {
         super.viewDidLoad()
 
 		databaseRef = Database.database().reference()
+        tblView.delegate = self
+        tblView.dataSource = self
         setupUI()
 		fillInfo()
 		getTasks()
