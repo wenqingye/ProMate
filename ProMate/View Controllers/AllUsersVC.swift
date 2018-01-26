@@ -59,7 +59,11 @@ extension AllUsersVC{
 
 extension AllUsersVC : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (allDeveloper?.count)!
+        if let alldeve = allDeveloper{
+            return alldeve.count
+        }else{
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -67,8 +71,13 @@ extension AllUsersVC : UITableViewDelegate, UITableViewDataSource{
         let oneUser = allDeveloper![indexPath.row]
         cell?.nameLabel.text = oneUser.name
         cell?.emailLabel.text = oneUser.email
-        let url = URL(string : oneUser.profilePic)
-        cell?.profileImage.sd_setImage(with: url!, completed: nil)
+        if oneUser.profilePic != ""{
+            let url = URL(string : oneUser.profilePic)
+            cell?.profileImage.sd_setImage(with: url!, completed: nil)
+        }
+        else {
+            cell?.profileImage.image = UIImage(named : "defaultProfileImg")
+        }
         cell?.selectButton.tag = indexPath.row
         cell?.selectButton.addTarget(self, action: #selector(selectUser), for: .touchUpInside)
         return cell!
@@ -80,6 +89,7 @@ extension AllUsersVC : UITableViewDelegate, UITableViewDataSource{
         //update the user info, and the task info
         //send this info back to add task vc
         delegate?.didAddNewAssignee(user: choosedUser)
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
+       // dismiss(animated: true, completion: nil)
     }
 }

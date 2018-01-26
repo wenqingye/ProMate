@@ -32,6 +32,7 @@ class AddTaskVC: UIViewController{
         contentTextView.text = "Type task content here ..."
         contentTextView.textColor = UIColor.lightGray
         databaseRef = Database.database().reference()
+        datePickerBtmConstraint.constant = -180
         hideKeyboardWhenTappedAround()
     }
 
@@ -77,8 +78,8 @@ class AddTaskVC: UIViewController{
     
         //send task info back
         delegate?.didAddNewTask(newTask: newTask)
-        //dismiss view controller
-		dismiss(animated: true, completion: nil)
+        //pop view controller
+		navigationController?.popViewController(animated: true)
     }
     
     
@@ -92,8 +93,8 @@ class AddTaskVC: UIViewController{
         //add assignee, go to all users vc and choose one user
         if let controller = storyboard?.instantiateViewController(withIdentifier: "AllUsersVC") as? AllUsersVC{
             controller.delegate = self
-            navigationController?.present(controller, animated: true, completion: nil)
-//            navigationController?.pushViewController(controller, animated: true)
+           // navigationController?.present(controller, animated: true, completion: nil)
+            navigationController?.pushViewController(controller, animated: true)
         }
     }
     
@@ -108,12 +109,12 @@ class AddTaskVC: UIViewController{
     }
     
     @IBAction func btnCancelDatePicker(_ sender: Any) {
-        datePickerBtmConstraint.constant -= 120
+        datePickerBtmConstraint.constant -= 180
     }
     
     
     @IBAction func btnDoneDatePicker(_ sender: Any) {
-        datePickerBtmConstraint.constant -= 120
+        datePickerBtmConstraint.constant -= 180
         let date = taskDatePicker.date
         if dateType == "start"{
             startDateLbl.text = date.toString()
