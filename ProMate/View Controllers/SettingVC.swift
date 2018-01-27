@@ -86,6 +86,15 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0{
+            //change profile
+            if let controller = storyboard?.instantiateViewController(withIdentifier: "ChangeProfileVC") as? ChangeProfileViewController{
+                present(controller, animated: true, completion: nil)
+            }
+        }
+        if indexPath.row == 1{
+            changePsw()
+        }
         if indexPath.row == 2{
             //log out
             do{
@@ -95,6 +104,18 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource{
                 AccessFirebase.sharedAccess.resetCurUserInfo()
             }catch{
                 TWMessageBarManager.sharedInstance().showMessage(withTitle: "Error", description: error.localizedDescription, type: .error)
+            }
+        }
+    }
+    
+    func changePsw(){
+        if let curUser = AccessFirebase.sharedAccess.curUserInfo{
+            Auth.auth().sendPasswordReset(withEmail: curUser.email){ (error) in
+                if let err = error{
+                    TWMessageBarManager.sharedInstance().showMessage(withTitle: "Sorry", description: err.localizedDescription, type: .error)
+                }else{
+                    TWMessageBarManager.sharedInstance().showMessage(withTitle: "Success", description: "An email already send to you" , type: .error)
+                }
             }
         }
     }

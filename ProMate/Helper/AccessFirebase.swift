@@ -21,6 +21,7 @@ class AccessFirebase : NSObject{
     var curUserInfo : User?
     var curUserTasks : [String]?
     var curUserProjects : [String]?
+    var extraUserInfo : [String : String]?
     
     //call this function when login or change user information.
     //This function will read current user information(User, and list of projects/tasks), and store it in curUserInfo and CureUserTasks/Projects. Thus in this project, we can read these two property anywhere we want to access current user info.
@@ -44,6 +45,16 @@ class AccessFirebase : NSObject{
             
             if let tasks = value["tasks"] as? [String : String]{
                 self.curUserTasks = Array(tasks.keys)
+            }
+            
+            if let phone = value["phone"] as? String{
+                self.extraUserInfo?["phone"] = phone
+            }
+            if let gender = value["gender"] as? String{
+                self.extraUserInfo?["gender"] = gender
+            }
+            if let company = value["company"] as? String{
+                self.extraUserInfo?["company"] = company
             }
             completion("success")
         })
