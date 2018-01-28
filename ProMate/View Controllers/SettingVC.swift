@@ -1,10 +1,3 @@
-//
-//  SettingVC.swift
-//  ProMate
-//
-//  Created by XIN LIU on 1/24/18.
-//  Copyright © 2018 Wenqing Ye. All rights reserved.
-//
 
 import UIKit
 import Firebase
@@ -21,6 +14,8 @@ class SettingVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		profileImg.asCircle()
         settingTblView.tableFooterView = UIView()
         setUpUserInfo()
     }
@@ -39,7 +34,6 @@ class SettingVC: UIViewController {
         }else{
             setDetailProfile(curUser: curUser!)
         }
-        
     }
     
     func setDetailProfile(curUser : User){

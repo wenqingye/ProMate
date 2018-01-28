@@ -27,11 +27,11 @@ class AddTaskVC: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-		
+
         contentTextView.text = "Type task content here ..."
         contentTextView.textColor = UIColor.lightGray
         databaseRef = Database.database().reference()
-        datePickerBtmConstraint.constant = -180
+        datePickerBtmConstraint.constant = -200
         hideKeyboardWhenTappedAround()
     }
 	
@@ -71,8 +71,8 @@ class AddTaskVC: UIViewController{
             dict["projectId"] = oneProject.id
             newTask.projectId = oneProject.id
         }
-        dict["isFinished"] = false
-        dict["userId"] = newTask.id
+        dict["isFinished"] = "false"
+        dict["userId"] = AccessFirebase.sharedAccess.curUserInfo?.id
         //update database/
         //task
         let key = databaseRef?.child("tasks").childByAutoId().key
@@ -109,17 +109,19 @@ class AddTaskVC: UIViewController{
     }
     
     @IBAction func btnCancelDatePicker(_ sender: Any) {
-        datePickerBtmConstraint.constant -= 180
+        datePickerBtmConstraint.constant -= 200
     }
     
     
     @IBAction func btnDoneDatePicker(_ sender: Any) {
-        datePickerBtmConstraint.constant -= 180
-        let date = taskDatePicker.date
+        datePickerBtmConstraint.constant -= 200
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "MM/DD/YYYY"
+        let date = dateFormatter.string(from: taskDatePicker.date)
         if dateType == "start"{
-            startDateLbl.text = date.toString()
+            startDateLbl.text = date
         }else{
-            endDateLbl.text = date.toString()
+            endDateLbl.text = date
         }
     }
     
