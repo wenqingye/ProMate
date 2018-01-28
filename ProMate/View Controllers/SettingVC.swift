@@ -89,6 +89,7 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource{
         if indexPath.row == 0{
             //change profile
             if let controller = storyboard?.instantiateViewController(withIdentifier: "ChangeProfileVC") as? ChangeProfileViewController{
+                controller.delegate = self
                 present(controller, animated: true, completion: nil)
             }
         }
@@ -120,4 +121,14 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource{
         }
     }
     
+}
+
+extension SettingVC : ChangeProfileDelegate{
+    func didChangeProfile() {
+        AccessFirebase.sharedAccess.getCurUserInfo(){ res in
+            if let curUser = AccessFirebase.sharedAccess.curUserInfo{
+                self.setDetailProfile(curUser: curUser)
+            }
+        }
+    }
 }

@@ -11,7 +11,7 @@ import Firebase
 import TWMessageBarManager
 import SDWebImage
 
-//what to update : 1. add delegate method
+
 
 class ChangeProfileViewController: UIViewController {
 
@@ -26,6 +26,7 @@ class ChangeProfileViewController: UIViewController {
 
     var userDict = [String : String]()
     var gender : String?
+    var delegate : ChangeProfileDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,21 +81,36 @@ class ChangeProfileViewController: UIViewController {
             self.userDict["company"] = company
         }
         
+        
         if let curUser = AccessFirebase.sharedAccess.curUserInfo{
-            Database.database().reference().child("users").child(curUser.id).updateChildValues(self.userDict)
-            AccessFirebase.sharedAccess.uploadImg(image: self.profileImg.image!)
-            //update current user info
-            AccessFirebase.sharedAccess.getCurUserInfo(){ res in
-                TWMessageBarManager.sharedInstance().showMessage(withTitle: "Success", description: "updated profile", type: .info)
-               self.dismiss(animated: true, completion: nil)
+            //update database, and user profile image
+           Database.database().reference().child("users").child(curUser.id).updateChildValues(self.userDict)
+            TWMessageBarManager.sharedInstance().showMessage(withTitle: "Success", description: "updated profile", type: .info)
+            AccessFirebase.sharedAccess.uploadImg(image: self.profileImg.image!){ res in
+                //update current user info
+                AccessFirebase.sharedAccess.getCurUserInfo(){ res in
+                    self.delegate?.didChangeProfile()
+                    self.dismiss(animated: true, completion: nil)
+                }
+                
             }
         }
-        
     }
 }
 
 extension ChangeProfileViewController{
     func setupUserInfo(){
+        if AccessFirebase.sharedAccess.curUserInfo == nil{
+            AccessFirebase.sharedAccess.getCurUserInfo(){ res in
+                self.getUserInfo()
+            }
+        }else{
+            self.getUserInfo()
+        }
+        
+    }
+    
+    func getUserInfo(){
         if let curUser = AccessFirebase.sharedAccess.curUserInfo{
             if curUser.role == "manager"{
                 self.userName.text = "Project manager : \(curUser.name)"
@@ -103,8 +119,13 @@ extension ChangeProfileViewController{
             }
             self.emailAddress.text = curUser.email
             self.userNameTextField.text = curUser.name
-            let url = URL(string : curUser.profilePic)
-            self.profileImg.sd_setImage(with: url!, completed: nil)
+            let img = curUser.profilePic
+            if img != ""{
+                let url = URL(string : img)
+                profileImg.sd_setImage(with: url!, completed: nil)
+            }else{
+                profileImg.image = UIImage(named : "defaultProfileImg")
+            }
         }
         if let userProfile = AccessFirebase.sharedAccess.extraUserInfo{
             if let phone = userProfile["phone"]{
@@ -133,6 +154,10 @@ extension ChangeProfileViewController{
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         //show the picture you just choose
         self.profileImg.image = image
-      //  AccessFirebase.sharedAccess.uploadImg(image: self.userImgView.image!)
     }
+}
+
+//protocol for user name changes
+protocol ChangeProfileDelegate {
+    func didChangeProfile()
 }

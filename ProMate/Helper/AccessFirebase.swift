@@ -115,7 +115,7 @@ class AccessFirebase : NSObject{
 	}
     
     //upload one user profile img to storage, and update database profile image url
-    func uploadImg(image: UIImage){
+    func uploadImg(image: UIImage, completion : @escaping completionHandler){
         self.storageRef = Storage.storage().reference()
         let data = UIImageJPEGRepresentation(image, 0.5)
         let metadata = StorageMetadata()
@@ -133,6 +133,7 @@ class AccessFirebase : NSObject{
                 let urlStr = String(describing : (metadata?.downloadURL())!)
                 
                 Database.database().reference().child("users").child(userId!).updateChildValues(["profilePic" : urlStr])
+                completion("success")
             }
         })
     }
