@@ -750,8 +750,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxM-OA-d3s">
-                                <rect key="frame" x="30" y="135" width="314" height="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manager Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxM-OA-d3s">
+                                <rect key="frame" x="80" y="135" width="265" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="lTT-aV-xZB"/>
                                 </constraints>
@@ -804,6 +804,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Rm-zL-qGF">
+                                <rect key="frame" x="30" y="135" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="MbD-N9-E53"/>
+                                    <constraint firstAttribute="height" constant="40" id="w1k-g8-oG3"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -818,26 +825,37 @@
                             <constraint firstItem="EYz-ER-xLE" firstAttribute="centerX" secondItem="dgJ-OY-qgq" secondAttribute="centerX" id="F7c-vc-255"/>
                             <constraint firstItem="KFq-ZI-dAB" firstAttribute="centerX" secondItem="dgJ-OY-qgq" secondAttribute="centerX" id="GU1-GB-udU"/>
                             <constraint firstItem="VaR-fh-Ov5" firstAttribute="top" secondItem="KFq-ZI-dAB" secondAttribute="bottom" constant="10" id="IXf-3C-PvY"/>
+                            <constraint firstItem="6Rm-zL-qGF" firstAttribute="leading" secondItem="J59-fN-Fjv" secondAttribute="leading" constant="30" id="IcR-bI-kMD"/>
                             <constraint firstItem="ERn-Ia-RGl" firstAttribute="centerX" secondItem="dgJ-OY-qgq" secondAttribute="centerX" id="IzA-La-JhJ"/>
                             <constraint firstItem="NmS-t8-a2E" firstAttribute="centerX" secondItem="dgJ-OY-qgq" secondAttribute="centerX" id="Mi8-Cw-fqa"/>
                             <constraint firstItem="rU7-kK-DxZ" firstAttribute="centerX" secondItem="dgJ-OY-qgq" secondAttribute="centerX" id="MlR-Hr-5A0"/>
-                            <constraint firstItem="hxM-OA-d3s" firstAttribute="leading" secondItem="J59-fN-Fjv" secondAttribute="leading" constant="30" id="RBD-2H-Z3B"/>
+                            <constraint firstItem="hxM-OA-d3s" firstAttribute="leading" secondItem="J59-fN-Fjv" secondAttribute="leading" constant="80" id="RBD-2H-Z3B"/>
+                            <constraint firstItem="6Rm-zL-qGF" firstAttribute="top" secondItem="ERn-Ia-RGl" secondAttribute="bottom" constant="10" id="S75-qS-azy"/>
                             <constraint firstItem="hxM-OA-d3s" firstAttribute="centerX" secondItem="dgJ-OY-qgq" secondAttribute="centerX" id="bfP-2f-kpM"/>
                             <constraint firstItem="hxM-OA-d3s" firstAttribute="top" secondItem="ERn-Ia-RGl" secondAttribute="bottom" constant="10" id="dw8-1q-IxI"/>
                             <constraint firstItem="rU7-kK-DxZ" firstAttribute="leading" secondItem="J59-fN-Fjv" secondAttribute="leading" constant="30" id="ekS-2B-Eyr"/>
+                            <constraint firstItem="hxM-OA-d3s" firstAttribute="leading" secondItem="6Rm-zL-qGF" secondAttribute="trailing" constant="10" id="fwV-WM-m1t"/>
                             <constraint firstItem="EYz-ER-xLE" firstAttribute="leading" secondItem="J59-fN-Fjv" secondAttribute="leading" constant="30" id="jjd-BW-D8B"/>
                             <constraint firstItem="o6F-Ib-lqK" firstAttribute="top" secondItem="NmS-t8-a2E" secondAttribute="bottom" constant="10" id="liI-Bc-6PD"/>
+                            <constraint firstItem="J59-fN-Fjv" firstAttribute="trailing" secondItem="hxM-OA-d3s" secondAttribute="trailing" constant="30" id="lvI-ce-UAc"/>
                             <constraint firstItem="ERn-Ia-RGl" firstAttribute="leading" secondItem="J59-fN-Fjv" secondAttribute="leading" constant="30" id="wNw-Db-MCK"/>
                             <constraint firstItem="EYz-ER-xLE" firstAttribute="top" secondItem="o6F-Ib-lqK" secondAttribute="bottom" constant="10" id="xa6-hl-SZN"/>
                             <constraint firstItem="NmS-t8-a2E" firstAttribute="top" secondItem="VaR-fh-Ov5" secondAttribute="bottom" constant="10" id="yN9-Ri-htG"/>
                             <constraint firstItem="rU7-kK-DxZ" firstAttribute="top" secondItem="hxM-OA-d3s" secondAttribute="bottom" constant="10" id="zlc-ys-Tow"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="J59-fN-Fjv"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="RBD-2H-Z3B"/>
+                                <exclude reference="bfP-2f-kpM"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="contentTextView" destination="VaR-fh-Ov5" id="Tan-k2-jPY"/>
                         <outlet property="developerNameLabel" destination="rU7-kK-DxZ" id="CUP-Zh-fcC"/>
                         <outlet property="endDateLabel" destination="EYz-ER-xLE" id="b2U-r8-P0G"/>
+                        <outlet property="managerImgView" destination="6Rm-zL-qGF" id="SiY-16-6fd"/>
                         <outlet property="managerNameLabel" destination="hxM-OA-d3s" id="V7e-Hg-alz"/>
                         <outlet property="projectNameLabel" destination="ERn-Ia-RGl" id="oBi-5C-uw0"/>
                         <outlet property="startDateLabel" destination="o6F-Ib-lqK" id="V1N-zu-pAM"/>

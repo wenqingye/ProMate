@@ -159,6 +159,7 @@ extension TaskVC: UITableViewDelegate, UITableViewDataSource {
 		let task = tasks[indexPath.row]
 		if let vc = storyboard?.instantiateViewController(withIdentifier: "TaskDetailsVC") as? TaskDetailsVC {
 			vc.task = task
+            vc.image = self.managerProfileImage.image
             vc.projectName = self.projectNameLabel.text
             vc.managerName = self.managerNameLabel.text
 			navigationController?.pushViewController(vc, animated: true)

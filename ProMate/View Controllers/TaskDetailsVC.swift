@@ -5,6 +5,7 @@ class TaskDetailsVC: UIViewController {
 	
 	var task: Task?
     
+    @IBOutlet weak var managerImgView: UIImageView!
     @IBOutlet weak var projectNameLabel: UILabel!
     @IBOutlet weak var managerNameLabel: UILabel!
     @IBOutlet weak var developerNameLabel: UILabel!
@@ -16,7 +17,7 @@ class TaskDetailsVC: UIViewController {
     
     var projectName : String?
     var managerName : String?
-    
+    var image : UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,16 +44,19 @@ extension TaskDetailsVC{
         if let projectN = projectName{
             projectNameLabel.text = projectN
         }
+        if let managerImg = image{
+            managerImgView.image = managerImg
+        }
         if let managerN = managerName{
-            managerNameLabel.text = managerN
+            managerNameLabel.text = "Manager Name: \(managerN)"
         }
         if let curTask = task{
             titleTextField.text = curTask.name
             contentTextView.text = curTask.content
-            statusLabel.text = curTask.isFinished ? "Status : Finished" : "Status : Not finished"
-            startDateLabel.text = "Start Date : \(curTask.startDate)"
+            statusLabel.text = curTask.isFinished ? "Status: Finished" : "Status: Not finished"
+            startDateLabel.text = "Start Date: \(curTask.startDate)"
             
-            endDateLabel.text = "End Date : \(curTask.endData)"
+            endDateLabel.text = "End Date:   \(curTask.endData)"
             //get developer name
             if curTask.userId != ""{
                 AccessFirebase.sharedAccess.getUser(id: curTask.userId){ user in
