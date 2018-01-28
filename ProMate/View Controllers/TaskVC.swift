@@ -20,32 +20,36 @@ class TaskVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+		projectNameLabel.sizeToFit()
+		managerProfileImage.asCircle()
+		managerNameLabel.sizeToFit()
 		tblView.estimatedRowHeight = 80
 		tblView.rowHeight = UITableViewAutomaticDimension
 		databaseRef = Database.database().reference()
-        setupUI()
+
         fillInfo()
         setupTasks()
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		navigationItem.title = "Task"
+		let rightBarButton = UIBarButtonItem(image: UIImage(named: "addWhiteButton"), style: .plain, target: self, action: #selector(didClickAddTask))
+		rightBarButton.tintColor = .white
+		if AccessFirebase.sharedAccess.curUserInfo?.role == "manager" {
+			navigationItem.rightBarButtonItem = rightBarButton
+		} else {
+			navigationItem.rightBarButtonItem = nil
+		}
+		
+		let backBarButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+		backBarButton.tintColor = .white
+		navigationItem.backBarButtonItem = backBarButton
+	}
     
     
     // MARK: - Methods
-    func setupUI() {
-        
-        navigationItem.title = "Task"
-        projectNameLabel.sizeToFit()
-        managerProfileImage.asCircle()
-        managerNameLabel.sizeToFit()
-        
-        let rightBarButton = UIBarButtonItem(image: UIImage(named: "addWhiteButton"), style: .plain, target: self, action: #selector (didClickAddTask))
-        rightBarButton.tintColor = .white
-        if AccessFirebase.sharedAccess.curUserInfo?.role == "manager" {
-            navigationItem.rightBarButtonItem = rightBarButton
-        } else {
-            navigationItem.rightBarButtonItem = nil
-        }
-    }
-    
     func fillInfo() {
         
         // get manager info by the project manager id

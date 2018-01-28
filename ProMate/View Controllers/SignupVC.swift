@@ -23,11 +23,6 @@ class SignupVC: UIViewController {
         super.viewDidLoad()
         databaseRef = Database.database().reference().child("users")
         storageRef = Storage.storage().reference()
-        
-        nameTextField.delegate = self
-        emailTextField.delegate = self
-        passwordTextField.delegate = self
-        confirmPswTextField.delegate = self
 		
 		profileImgView.asCircle()
 		profilePicButton.asCircle()

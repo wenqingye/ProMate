@@ -17,11 +17,16 @@ class AllUsersVC: UIViewController {
         super.viewDidLoad()
         
         databaseRef = Database.database().reference()
+		
         //list all user info here
         getAllUserList()
-        userInfoTbl.dataSource = self
-        userInfoTbl.delegate = self
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		
+	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -55,6 +60,7 @@ extension AllUsersVC{
 //            self.refreshControll.endRefreshing()
         })
     }
+	
 }
 
 extension AllUsersVC : UITableViewDelegate, UITableViewDataSource{
@@ -89,7 +95,6 @@ extension AllUsersVC : UITableViewDelegate, UITableViewDataSource{
         //update the user info, and the task info
         //send this info back to add task vc
         delegate?.didAddNewAssignee(user: choosedUser)
-        navigationController?.popViewController(animated: true)
-       // dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }

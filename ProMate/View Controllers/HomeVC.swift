@@ -19,33 +19,30 @@ class HomeVC: UIViewController {
 		tblView.rowHeight = UITableViewAutomaticDimension
 		databaseRef = Database.database().reference()
 		
-        setUpInfo()
-        
+		if AccessFirebase.sharedAccess.curUserInfo == nil{
+			AccessFirebase.sharedAccess.getCurUserInfo(){ (res) in
+				self.getProjects()
+			}
+		}else{
+			self.getProjects()
+		}
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		navigationItem.title = "Home"
+		let backBarButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+		backBarButton.tintColor = .white
+		navigationItem.backBarButtonItem = backBarButton
+		
+		if AccessFirebase.sharedAccess.curUserInfo?.role != "manager" {
+			navigationItem.rightBarButtonItem = nil
+		}
+	}
 
     
     // MARK: - Methods
-    func setupUI() {
-        
-        navigationItem.title = "Home"
-        // if is developer, don't show the add project button
-        if AccessFirebase.sharedAccess.curUserInfo?.role != "manager" {
-            navigationItem.rightBarButtonItem = nil
-        }
-    }
-        
-    
-    func setUpInfo(){
-		
-        if AccessFirebase.sharedAccess.curUserInfo == nil{
-            AccessFirebase.sharedAccess.getCurUserInfo(){ (res) in
-                self.getProjects()
-            }
-        }else{
-            self.getProjects()
-        }
-    }
-    
     func getProjects() {
         
         projects = []
@@ -76,7 +73,6 @@ class HomeVC: UIViewController {
                             }else{
                                 self.taskDict[projectId] = [taskId]
                             }
-                            
                             self.tblView.reloadData()
                         })
                     })
@@ -150,9 +146,6 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "TaskVC") as? TaskVC {
             vc.project = project
             vc.developerTasks = taskDict[project.id]
-            let backBarButton = UIBarButtonItem(image: UIImage(named: "backWhiteButton"), style: .plain, target: nil, action: nil)
-            backBarButton.tintColor = .white
-            navigationItem.backBarButtonItem = backBarButton
             navigationController?.pushViewController(vc, animated: true)
         }
     }

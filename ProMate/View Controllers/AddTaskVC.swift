@@ -27,21 +27,29 @@ class AddTaskVC: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        contentTextView.delegate = self
-        titleTextField.delegate = self
+		
         contentTextView.text = "Type task content here ..."
         contentTextView.textColor = UIColor.lightGray
         databaseRef = Database.database().reference()
         datePickerBtmConstraint.constant = -180
         hideKeyboardWhenTappedAround()
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		navigationItem.title = "Add Task"
+		let rightBarButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(didClickSave))
+		rightBarButton.tintColor = .white
+		navigationItem.rightBarButtonItem = rightBarButton
+	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
   
     }
     
-    @IBAction func btnSaveTask(_ sender: Any) {
+	@objc func didClickSave() {
         var dict = [String : Any]()
         if let startDate = startDateLbl.text{
             dict["startDate"] = startDate
@@ -82,19 +90,11 @@ class AddTaskVC: UIViewController{
 		navigationController?.popViewController(animated: true)
     }
     
-    
-    @IBAction func btnCancel(_ sender: Any) {
-        //back
-        dismiss(animated: true, completion: nil)
-    }
-    
-    
     @IBAction func btnAddAssignee(_ sender: Any) {
         //add assignee, go to all users vc and choose one user
         if let controller = storyboard?.instantiateViewController(withIdentifier: "AllUsersVC") as? AllUsersVC{
             controller.delegate = self
-           // navigationController?.present(controller, animated: true, completion: nil)
-            navigationController?.pushViewController(controller, animated: true)
+            navigationController?.present(controller, animated: true, completion: nil)
         }
     }
     

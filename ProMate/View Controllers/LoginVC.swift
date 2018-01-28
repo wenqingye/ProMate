@@ -15,15 +15,10 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-		setupUI()
+		loginButton.asButton()
+		hideKeyboardWhenTappedAround()
     }
 
-	
-	// MARK: - Methods
-	func setupUI() {
-		loginButton.asButton()
-	}
-	
 	
 	// MARK: - Button Actions
 	@IBAction func didClickLogin(_ sender: UIButton) {
