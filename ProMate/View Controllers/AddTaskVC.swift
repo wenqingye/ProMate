@@ -77,7 +77,7 @@ class AddTaskVC: UIViewController{
             dict["projectId"] = oneProject.id
             newTask.projectId = oneProject.id
         }
-        dict["isFinished"] = "false"
+        dict["isFinished"] = false
         dict["userId"] = AccessFirebase.sharedAccess.curUserInfo?.id
         //update database/
         //task
@@ -123,7 +123,7 @@ class AddTaskVC: UIViewController{
     @IBAction func btnDoneDatePicker(_ sender: Any) {
         datePickerBtmConstraint.constant -= 200
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM-dd-yyyy"
+        dateFormatter.dateFormat = "MM/dd/yyyy"
         let date = dateFormatter.string(from: taskDatePicker.date)
         if dateType == "start"{
             startDateLbl.text = date
