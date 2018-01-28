@@ -95,6 +95,12 @@ class AccessFirebase : NSObject{
 				return
 			}
 			if let name = value["name"] as? String, let content = value["content"] as? String, let startDate = value["startDate"] as? String, let endDate = value["endDate"] as? String, let isFinished = value["isFinished"] as? Bool, let projectId = value["projectId"] as? String, let userId = value["userId"] as? String {
+//				var finish: Bool
+//				if isFinished == "true" {
+//					finish = true
+//				} else {
+//					finish = false
+//				}
 				let task = Task(name: name, id: id, content: content, startDate: startDate, endData: endDate, isFinished: isFinished, projectId: projectId, userId: userId)
 				completion(task)
 			}

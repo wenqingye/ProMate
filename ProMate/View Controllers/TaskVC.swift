@@ -164,6 +164,11 @@ extension TaskVC: UITableViewDelegate, UITableViewDataSource {
 			navigationController?.pushViewController(vc, animated: true)
 		}
 	}
+	
+	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		
+		return "Tasks"
+	}
 }
 
 

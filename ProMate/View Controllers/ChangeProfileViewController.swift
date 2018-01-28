@@ -1,17 +1,8 @@
-//
-//  ChangeProfileViewController.swift
-//  ProMate
-//
-//  Created by XIN LIU on 1/26/18.
-//  Copyright © 2018 Wenqing Ye. All rights reserved.
-//
 
 import UIKit
 import Firebase
 import TWMessageBarManager
 import SDWebImage
-
-
 
 class ChangeProfileViewController: UIViewController {
 
@@ -39,10 +30,6 @@ class ChangeProfileViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
-    @IBAction func btnChangePsw(_ sender: Any) {
-
-    }
-    
     @IBAction func btnChooseFemale(_ sender: Any) {
         gender = "female"
         isFemale.isSelected = true
@@ -60,13 +47,13 @@ class ChangeProfileViewController: UIViewController {
         self.getPicture()
     }
     
-    @IBAction func btnCancel(_ sender: Any) {
+    @IBAction func btnCancel(_ sender: UIBarButtonItem) {
         //do not save and back
         dismiss(animated: true, completion: nil)
     }
     
     
-    @IBAction func btnDone(_ sender: Any) {
+    @IBAction func btnDone(_ sender: UIBarButtonItem) {
         //save changes and back
         if let name = userNameTextField.text{
            self.userDict["name"] = name
