@@ -11,6 +11,8 @@ import Firebase
 import TWMessageBarManager
 import SDWebImage
 
+//what to update : 1. add delegate method
+
 class ChangeProfileViewController: UIViewController {
 
     @IBOutlet weak var profileImg: UIImageView!
@@ -101,6 +103,8 @@ extension ChangeProfileViewController{
             }
             self.emailAddress.text = curUser.email
             self.userNameTextField.text = curUser.name
+            let url = URL(string : curUser.profilePic)
+            self.profileImg.sd_setImage(with: url!, completed: nil)
         }
         if let userProfile = AccessFirebase.sharedAccess.extraUserInfo{
             if let phone = userProfile["phone"]{

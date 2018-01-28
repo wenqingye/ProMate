@@ -28,6 +28,7 @@ class AccessFirebase : NSObject{
     func getCurUserInfo(completion : @escaping completionHandler){
         curUserTasks = [String]()
         curUserProjects = [String]()
+        extraUserInfo = [String : String]()
         
         let uid = Auth.auth().currentUser?.uid
         databaseRef.child("users").child(uid!).observeSingleEvent(of: .value, with : {(snapshot) in
@@ -48,13 +49,13 @@ class AccessFirebase : NSObject{
             }
             
             if let phone = value["phone"] as? String{
-                self.extraUserInfo?["phone"] = phone
+                self.extraUserInfo!["phone"] = phone
             }
             if let gender = value["gender"] as? String{
-                self.extraUserInfo?["gender"] = gender
+                self.extraUserInfo!["gender"] = gender
             }
             if let company = value["company"] as? String{
-                self.extraUserInfo?["company"] = company
+                self.extraUserInfo!["company"] = company
             }
             completion("success")
         })
