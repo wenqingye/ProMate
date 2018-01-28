@@ -90,7 +90,7 @@ class AddTaskVC: UIViewController{
             let taskDict = [key! : "1"]
             databaseRef?.child("users").child(newTask.userId).child("tasks").updateChildValues(taskDict)
         }
-    
+		
         //send task info back
         delegate?.didAddNewTask(newTask: newTask)
         //pop view controller
