@@ -21,15 +21,9 @@ class HomeVC: UIViewController {
         if AccessFirebase.sharedAccess.curUserInfo == nil{
             AccessFirebase.sharedAccess.getCurUserInfo(){ (res) in
                 self.getProjects()
-                if AccessFirebase.sharedAccess.curUserInfo?.role != "manager" {
-                    self.navigationItem.rightBarButtonItem = nil
-                }
             }
         }else{
             self.getProjects()
-            if AccessFirebase.sharedAccess.curUserInfo?.role != "manager" {
-                navigationItem.rightBarButtonItem = nil
-            }
         }
         
 		
@@ -47,7 +41,9 @@ class HomeVC: UIViewController {
     
     // MARK: - Methods
     func getProjects() {
-        
+        if AccessFirebase.sharedAccess.curUserInfo?.role != "manager" {
+            navigationItem.rightBarButtonItem = nil
+        }
         projects = []
         if AccessFirebase.sharedAccess.curUserInfo?.role == "manager" {
             // is manager, get projects ids, get projects
