@@ -28,29 +28,29 @@ class AddTaskVC: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        contentTextView.text = "Type task content here ..."
+		
+        contentTextView.text = placeHolder
         contentTextView.textColor = UIColor.lightGray
         databaseRef = Database.database().reference()
         datePickerBtmConstraint.constant = -200
         hideKeyboardWhenTappedAround()
     }
-	
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-		
-		navigationItem.title = "Add Task"
-		let rightBarButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(didClickSave))
-		rightBarButton.tintColor = .white
-		navigationItem.rightBarButtonItem = rightBarButton
-	}
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationItem.title = "Add Task"
+        let rightBarButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(didClickSave))
+        rightBarButton.tintColor = .white
+        navigationItem.rightBarButtonItem = rightBarButton
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
   
     }
     
-	@objc func didClickSave() {
+    @objc func didClickSave() {
         var dict = [String : Any]()
         if let startDate = startDateLbl.text{
             dict["startDate"] = startDate
@@ -94,7 +94,7 @@ class AddTaskVC: UIViewController{
         //send task info back
         delegate?.didAddNewTask(newTask: newTask)
         //pop view controller
-		navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func btnAddAssignee(_ sender: Any) {
@@ -122,8 +122,8 @@ class AddTaskVC: UIViewController{
     
     @IBAction func btnDoneDatePicker(_ sender: Any) {
         datePickerBtmConstraint.constant -= 200
-		let dateFormatter = DateFormatter()
-		dateFormatter.dateFormat = "MM/DD/YYYY"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/DD/YYYY"
         let date = dateFormatter.string(from: taskDatePicker.date)
         if dateType == "start"{
             startDateLbl.text = date
