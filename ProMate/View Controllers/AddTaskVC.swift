@@ -82,7 +82,7 @@ class AddTaskVC: UIViewController{
         //update database/
         //task
         let key = databaseRef?.child("tasks").childByAutoId().key
-        newTask.id = key
+        newTask.id = key!
         databaseRef?.child("tasks").child(key!).updateChildValues(dict)
         databaseRef?.child("projects").child((curProject?.id)!).child("tasks").updateChildValues([key! : "1"])
         //update user info if assign an developer
