@@ -123,7 +123,7 @@ class AddTaskVC: UIViewController{
     @IBAction func btnDoneDatePicker(_ sender: Any) {
         datePickerBtmConstraint.constant -= 200
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/DD/YYYY"
+        dateFormatter.dateFormat = "MM-dd-yyyy"
         let date = dateFormatter.string(from: taskDatePicker.date)
         if dateType == "start"{
             startDateLbl.text = date
