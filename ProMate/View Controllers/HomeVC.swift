@@ -153,3 +153,16 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
+
+
+// MARK: - UpdateProjectTasks
+extension HomeVC: UpdateProjectTasks {
+	
+	func didUpdateProjectTasks(newTask: Task) {
+		for var project in projects {
+			if project.id == newTask.projectId {
+				project.tasksIds.append(newTask.id)
+			}
+		}
+	}
+}

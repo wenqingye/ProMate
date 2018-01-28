@@ -77,7 +77,7 @@ class AddTaskVC: UIViewController{
             dict["projectId"] = oneProject.id
             newTask.projectId = oneProject.id
         }
-        dict["isFinished"] = "false"
+        dict["isFinished"] = false
         dict["userId"] = AccessFirebase.sharedAccess.curUserInfo?.id
         //update database/
         //task
