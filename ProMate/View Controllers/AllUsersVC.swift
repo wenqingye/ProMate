@@ -61,6 +61,10 @@ extension AllUsersVC{
         })
     }
 	
+	@IBAction func didClickCancel(_ sender: UIBarButtonItem) {
+		
+		dismiss(animated: true, completion: nil)
+	}
 }
 
 extension AllUsersVC : UITableViewDelegate, UITableViewDataSource{
