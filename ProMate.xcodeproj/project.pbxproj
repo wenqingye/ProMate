@@ -196,8 +196,8 @@
 				40AD75AD20199186009EB321 /* AllUsersVC.swift */,
 				4023E996201A9B3000905DFF /* TaskDetailsVC.swift */,
 				0F7692962019A43C0093F417 /* SettingVC.swift */,
-				40AD759D2019476D009EB321 /* VCCells.swift */,
 				0F0E19F7201BD6F400FA43C6 /* ChangeProfileViewController.swift */,
+				40AD759D2019476D009EB321 /* VCCells.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
