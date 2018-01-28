@@ -4,11 +4,31 @@ import UIKit
 class TaskDetailsVC: UIViewController {
 	
 	var task: Task?
-
+    
+    @IBOutlet weak var projectNameLabel: UILabel!
+    @IBOutlet weak var managerNameLabel: UILabel!
+    @IBOutlet weak var developerNameLabel: UILabel!
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var contentTextView: UITextView!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var startDateLabel: UILabel!
+    @IBOutlet weak var endDateLabel: UILabel!
+    
+    var projectName : String?
+    var managerName : String?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupTaskInfo()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.title = "Task Detail"
+        let backBarButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        backBarButton.tintColor = .white
+        navigationItem.backBarButtonItem = backBarButton
     }
 
     override func didReceiveMemoryWarning() {
@@ -16,15 +36,33 @@ class TaskDetailsVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+extension TaskDetailsVC{
+    func setupTaskInfo(){
+        if let projectN = projectName{
+            projectNameLabel.text = projectN
+        }
+        if let managerN = managerName{
+            managerNameLabel.text = managerN
+        }
+        if let curTask = task{
+            titleTextField.text = curTask.name
+            contentTextView.text = curTask.content
+            statusLabel.text = curTask.isFinished ? "Status : Finished" : "Status : Not finished"
+            startDateLabel.text = "Start Date : \(curTask.startDate)"
+            
+            endDateLabel.text = "End Date : \(curTask.endData)"
+            //get developer name
+            if curTask.userId != ""{
+                AccessFirebase.sharedAccess.getUser(id: curTask.userId){ user in
+                    self.developerNameLabel.text = "Developer Name: \(user.name)"
+                }
+            }else{
+                self.developerNameLabel.text = "This task hasn't been assigned"
+            }
+            
+        }
+        
     }
-    */
-
 }
