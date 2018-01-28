@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F0E19F8201BD6F400FA43C6 /* ChangeProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E19F7201BD6F400FA43C6 /* ChangeProfileViewController.swift */; };
 		0F581B8C2018554400794CF2 /* AccessFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F581B8B2018554400794CF2 /* AccessFirebase.swift */; };
 		0F7692972019A43C0093F417 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7692962019A43C0093F417 /* SettingVC.swift */; };
 		4023E997201A9B3000905DFF /* TaskDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4023E996201A9B3000905DFF /* TaskDetailsVC.swift */; };
@@ -52,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		0D87D65791FC54EB5B9189C8 /* Pods_ProMateUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProMateUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F0E19F7201BD6F400FA43C6 /* ChangeProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeProfileViewController.swift; sourceTree = "<group>"; };
 		0F581B8B2018554400794CF2 /* AccessFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessFirebase.swift; sourceTree = "<group>"; };
 		0F7692962019A43C0093F417 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		209E69D4F35E718F71F76517 /* Pods-ProMateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProMateTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProMateTests/Pods-ProMateTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				4023E996201A9B3000905DFF /* TaskDetailsVC.swift */,
 				0F7692962019A43C0093F417 /* SettingVC.swift */,
 				40AD759D2019476D009EB321 /* VCCells.swift */,
+				0F0E19F7201BD6F400FA43C6 /* ChangeProfileViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 				0F7692972019A43C0093F417 /* SettingVC.swift in Sources */,
 				0F581B8C2018554400794CF2 /* AccessFirebase.swift in Sources */,
 				405D52F620184FBE00A70E16 /* HomeVC.swift in Sources */,
+				0F0E19F8201BD6F400FA43C6 /* ChangeProfileViewController.swift in Sources */,
 				40AD75A820198B58009EB321 /* TaskVC.swift in Sources */,
 				40AD75A220197076009EB321 /* Project.swift in Sources */,
 				40AD75A420197081009EB321 /* Task.swift in Sources */,

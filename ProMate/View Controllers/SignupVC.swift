@@ -48,13 +48,19 @@ class SignupVC: UIViewController {
                             self.databaseRef?.child(fireBaseUser.uid).updateChildValues(userDict)
                             TWMessageBarManager.sharedInstance().showMessage(withTitle: "Success", description: "sign up successfully", type: .info)
                             //upload profile image information
-                            AccessFirebase.sharedAccess.uploadImg(image: self.profileImgView.image!)
-                            //go to home page?
-                            AccessFirebase.sharedAccess.getCurUserInfo(){ res in
+                            AccessFirebase.sharedAccess.uploadImg(image: self.profileImgView.image!){ res in
+                                guard let _ = res as? String else{return}
+                                //get curUserInfo
+                                AccessFirebase.sharedAccess.getCurUserInfo(){ res in
+                                    guard let _ = res as? String else{return}
+                                    //go to home page?
+                                    if let vc = self.storyboard?.instantiateViewController(withIdentifier: "InitialHome") as? UITabBarController {
+                                        self.navigationController?.pushViewController(vc, animated: true)
+                                    }
+                                }
+                                
                             }
-                            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "InitialHome") as? UITabBarController {
-                                self.navigationController?.pushViewController(vc, animated: true)
-                            }
+                            
                         }
                     }
                 }

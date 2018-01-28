@@ -21,8 +21,7 @@ class SettingVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        settingTblView.delegate = self
-        settingTblView.dataSource = self
+        settingTblView.tableFooterView = UIView()
         setUpUserInfo()
     }
 
@@ -87,6 +86,16 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0{
+            //change profile
+            if let controller = storyboard?.instantiateViewController(withIdentifier: "ChangeProfileVC") as? ChangeProfileViewController{
+                controller.delegate = self
+                present(controller, animated: true, completion: nil)
+            }
+        }
+        if indexPath.row == 1{
+            changePsw()
+        }
         if indexPath.row == 2{
             //log out
             do{
@@ -100,4 +109,26 @@ extension SettingVC: UITableViewDelegate, UITableViewDataSource{
         }
     }
     
+    func changePsw(){
+        if let curUser = AccessFirebase.sharedAccess.curUserInfo{
+            Auth.auth().sendPasswordReset(withEmail: curUser.email){ (error) in
+                if let err = error{
+                    TWMessageBarManager.sharedInstance().showMessage(withTitle: "Sorry", description: err.localizedDescription, type: .error)
+                }else{
+                    TWMessageBarManager.sharedInstance().showMessage(withTitle: "Success", description: "An email already send to you" , type: .error)
+                }
+            }
+        }
+    }
+    
+}
+
+extension SettingVC : ChangeProfileDelegate{
+    func didChangeProfile() {
+        AccessFirebase.sharedAccess.getCurUserInfo(){ res in
+            if let curUser = AccessFirebase.sharedAccess.curUserInfo{
+                self.setDetailProfile(curUser: curUser)
+            }
+        }
+    }
 }
