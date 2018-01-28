@@ -106,6 +106,9 @@ class HomeVC: UIViewController {
                     
                     // add project to the user
                     self.databaseRef?.child("users").child(curUser.id).child("projects").updateChildValues([projectId: "1"])
+					
+					// add project to current user
+					AccessFirebase.sharedAccess.curUserProjects?.append(projectId)
                     
                     // update UI
                     let project = Project(name: name, id: projectId, tasksIds: [], managerId: curUser.id)
