@@ -25,8 +25,6 @@ class HomeVC: UIViewController {
         }else{
             self.getProjects()
         }
-        
-		
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
