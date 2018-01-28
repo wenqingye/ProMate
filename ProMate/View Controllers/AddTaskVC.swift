@@ -24,11 +24,12 @@ class AddTaskVC: UIViewController{
     var newTask = Task(name: "", id: "", content: "", startDate: "", endData: "", isFinished: false, projectId: "", userId: "")
     
     var databaseRef : DatabaseReference?
+    let placeHolder = "Type task content here ..."
     
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-        contentTextView.text = "Type task content here ..."
+        contentTextView.text = placeHolder
         contentTextView.textColor = UIColor.lightGray
         databaseRef = Database.database().reference()
         datePickerBtmConstraint.constant = -180
@@ -64,18 +65,24 @@ class AddTaskVC: UIViewController{
             newTask.name = taskName
         }
         if let content = contentTextView.text{
-            dict["content"] = content
-            newTask.content = content
+            if content != placeHolder{
+                dict["content"] = content
+                newTask.content = content
+            }else{
+                dict["content"] = ""
+                newTask.content = ""
+            }
         }
         if let oneProject = curProject{
             dict["projectId"] = oneProject.id
             newTask.projectId = oneProject.id
         }
         dict["isFinished"] = false
-        dict["userId"] = newTask.id
+        dict["userId"] = newTask.userId
         //update database/
         //task
         let key = databaseRef?.child("tasks").childByAutoId().key
+        newTask.id = key
         databaseRef?.child("tasks").child(key!).updateChildValues(dict)
         databaseRef?.child("projects").child((curProject?.id)!).child("tasks").updateChildValues([key! : "1"])
         //update user info if assign an developer
