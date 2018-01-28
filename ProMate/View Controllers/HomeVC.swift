@@ -18,14 +18,13 @@ class HomeVC: UIViewController {
 		tblView.estimatedRowHeight = 65
 		tblView.rowHeight = UITableViewAutomaticDimension
 		databaseRef = Database.database().reference()
-		
-		if AccessFirebase.sharedAccess.curUserInfo == nil{
-			AccessFirebase.sharedAccess.getCurUserInfo(){ (res) in
-				self.getProjects()
-			}
-		}else{
-			self.getProjects()
-		}
+        if AccessFirebase.sharedAccess.curUserInfo == nil{
+            AccessFirebase.sharedAccess.getCurUserInfo(){ (res) in
+                self.getProjects()
+            }
+        }else{
+            self.getProjects()
+        }
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -35,16 +34,14 @@ class HomeVC: UIViewController {
 		let backBarButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 		backBarButton.tintColor = .white
 		navigationItem.backBarButtonItem = backBarButton
-		
-		if AccessFirebase.sharedAccess.curUserInfo?.role != "manager" {
-			navigationItem.rightBarButtonItem = nil
-		}
 	}
 
     
     // MARK: - Methods
     func getProjects() {
-        
+        if AccessFirebase.sharedAccess.curUserInfo?.role != "manager" {
+            navigationItem.rightBarButtonItem = nil
+        }
         projects = []
         if AccessFirebase.sharedAccess.curUserInfo?.role == "manager" {
             // is manager, get projects ids, get projects
