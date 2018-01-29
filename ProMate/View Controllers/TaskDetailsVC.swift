@@ -55,7 +55,7 @@ extension TaskDetailsVC{
         if let curTask = task{
             titleTextField.text = curTask.name
             contentTextView.text = curTask.content
-            statusLabel.text = curTask.isFinished ? "Status: Finished" : "Status: Not finished"
+            statusLabel.text = curTask.isFinished ? "Status: Finished" : "Status: In Progress"
             startDateLabel.text = "Start Date: \(curTask.startDate)"
             
             endDateLabel.text = "End Date:   \(curTask.endData)"
