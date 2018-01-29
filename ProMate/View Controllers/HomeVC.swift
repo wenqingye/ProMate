@@ -48,7 +48,8 @@ class HomeVC: UIViewController {
             if let projectsIds = AccessFirebase.sharedAccess.curUserProjects {
                 for projectId in projectsIds {
                     // for each project id, get project object
-                      AccessFirebase.sharedAccess.getProject(id: projectId){ (project) in
+					// every time reload table can take time, profiler
+					AccessFirebase.sharedAccess.getProject(id: projectId){ (project) in
                         self.projects.append(project)
                         self.tblView.reloadData()
                     }

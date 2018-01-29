@@ -22,6 +22,7 @@ class TaskDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
+		managerImgView.asCircle()
 		titleTextField.isEnabled = false
         setupTaskInfo()
     }
