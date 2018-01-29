@@ -21,6 +21,8 @@ class TaskDetailsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		titleTextField.isEnabled = false
         setupTaskInfo()
     }
     
