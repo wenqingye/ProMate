@@ -10,6 +10,7 @@ class TaskVC: UIViewController {
     var tasks: [Task] = []
     var developerTasks : [String]?
     var databaseRef: DatabaseReference?
+	var delegate: UpdateProjectTasks?
     @IBOutlet weak var projectNameLabel: UILabel!
     @IBOutlet weak var managerProfileImage: UIImageView!
     @IBOutlet weak var managerNameLabel: UILabel!
@@ -178,6 +179,14 @@ extension TaskVC: AddNewTask {
     
     func didAddNewTask(newTask: Task) {
         tasks.append(newTask)
+		delegate?.didUpdateProjectTasks(newTask: newTask)
         tblView.reloadData()
     }    
+}
+
+
+// MARK: - UpdateProjectTasks
+protocol UpdateProjectTasks {
+	
+	func didUpdateProjectTasks(newTask: Task)
 }

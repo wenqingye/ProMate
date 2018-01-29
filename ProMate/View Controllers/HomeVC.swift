@@ -146,9 +146,23 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         // pass the selected project to task vc
         let project = projects[indexPath.row]
         if let vc = storyboard?.instantiateViewController(withIdentifier: "TaskVC") as? TaskVC {
+			vc.delegate = self
             vc.project = project
             vc.developerTasks = taskDict[project.id]
             navigationController?.pushViewController(vc, animated: true)
         }
     }
+}
+
+
+// MARK: - UpdateProjectTasks
+extension HomeVC: UpdateProjectTasks {
+	
+	func didUpdateProjectTasks(newTask: Task) {
+		for i in 0 ..< projects.count {
+			if projects[i].id == newTask.projectId {
+				projects[i].tasksIds.append(newTask.id)
+			}
+		}
+	}
 }
