@@ -121,9 +121,11 @@ class TaskVC: UIViewController {
         var task = tasks[index]
         if sender.isSelected == true {
             task.isFinished = true
+            tasks[index].isFinished = true
             databaseRef?.child("tasks").child(task.id).updateChildValues(["isFinished": true])
         } else {
             task.isFinished = false
+            tasks[index].isFinished = false
             databaseRef?.child("tasks").child(task.id).updateChildValues(["isFinished": false])
         }
     }
