@@ -62,6 +62,7 @@ class HomeVC: UIViewController {
                     AccessFirebase.sharedAccess.getTask(id: taskId, completion: { (task) in
                         let projectId = task.projectId
                         AccessFirebase.sharedAccess.getProject(id: projectId, completion: { (project) in
+							self.projects.append(project)
                             if let taskArr = self.taskDict[projectId]{
                                 var newArr = taskArr
                                 newArr.append(taskId)
