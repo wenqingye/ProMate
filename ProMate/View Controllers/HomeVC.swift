@@ -1,6 +1,7 @@
 
 import UIKit
 import Firebase
+import TWMessageBarManager
 
 class HomeVC: UIViewController {
     
@@ -93,27 +94,33 @@ class HomeVC: UIViewController {
             }
             let saveAction = UIAlertAction(title: "Save", style: .default) { (alert) in
                 let nameTextfield = alertController.textFields![0]
-                if let name = nameTextfield.text {
-                    // add new project to firebase
-                    guard let projectId = self.databaseRef?.child("projects").childByAutoId().key else {
-                        return
-                    }
-                    let projectDict = ["name": name, "id": projectId, "managerId": curUser.id] as [String: Any]
-                    self.databaseRef?.child("projects").child(projectId).updateChildValues(projectDict)
-                    
-                    // add project to the user
-                    self.databaseRef?.child("users").child(curUser.id).child("projects").updateChildValues([projectId: "1"])
-					
-					// add project to current user
-					AccessFirebase.sharedAccess.curUserProjects?.append(projectId)
-                    
-                    // update UI
-                    let project = Project(name: name, id: projectId, tasksIds: [], managerId: curUser.id)
-                    self.projects.append(project)
-                    DispatchQueue.main.async {
-                        self.tblView.reloadData()
-                    }
-                }
+				//if name is empty, can't create new project
+				let text = nameTextfield.text?.replacingOccurrences(of: " ", with: "")
+				if text?.isEmpty == true {
+					TWMessageBarManager.sharedInstance().showMessage(withTitle: "Error", description: "Please enter a valid name", type: TWMessageBarMessageType.error)
+				} else {
+					if let name = nameTextfield.text {
+						// add new project to firebase
+						guard let projectId = self.databaseRef?.child("projects").childByAutoId().key else {
+							return
+						}
+						let projectDict = ["name": name, "id": projectId, "managerId": curUser.id] as [String: Any]
+						self.databaseRef?.child("projects").child(projectId).updateChildValues(projectDict)
+						
+						// add project to the user
+						self.databaseRef?.child("users").child(curUser.id).child("projects").updateChildValues([projectId: "1"])
+						
+						// add project to current user
+						AccessFirebase.sharedAccess.curUserProjects?.append(projectId)
+						
+						// update UI
+						let project = Project(name: name, id: projectId, tasksIds: [], managerId: curUser.id)
+						self.projects.append(project)
+						DispatchQueue.main.async {
+							self.tblView.reloadData()
+						}
+					}
+				}
             }
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             alertController.addAction(saveAction)
