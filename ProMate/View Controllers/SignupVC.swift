@@ -37,36 +37,28 @@ class SignupVC: UIViewController {
     
     @IBAction func btnSignupAction(_ sender: Any) {
         //check if two passowrd is the same, email address can't be null
-        if let password = passwordTextField.text, let email = emailTextField.text, let role = userRole{
-            if passwdIsValid() && !(email.isEmpty){
-                Auth.auth().createUser(withEmail: email, password: password){ (user,error) in
-                    if let err = error{
-                        print(err.localizedDescription)
-                    }else{
-                        if let fireBaseUser = user{
-                            let userDict = ["name" : self.nameTextField.text!,"email": email, "password" : password, "profilePic" : "", "role" : role]
-                            self.databaseRef?.child(fireBaseUser.uid).updateChildValues(userDict)
-                            TWMessageBarManager.sharedInstance().showMessage(withTitle: "Success", description: "sign up successfully", type: .info)
-                            //upload profile image information
-                            AccessFirebase.sharedAccess.uploadImg(image: self.profileImgView.image!){ res in
-                                guard let _ = res as? String else{return}
-                                //get curUserInfo
-                                AccessFirebase.sharedAccess.getCurUserInfo(){ res in
-                                    guard let _ = res as? String else{return}
-                                    //go to home page?
-                                    if let vc = self.storyboard?.instantiateViewController(withIdentifier: "InitialHome") as? UITabBarController {
-                                        self.navigationController?.pushViewController(vc, animated: true)
-                                    }
-                                }
-                                
-                            }
-                            
-                        }
-                    }
-                }
+        var message = ""
+        if let password = passwordTextField.text, let email = emailTextField.text, let _ = userRole{
+            let newemail = email.replacingOccurrences(of: " ", with: "")
+            let newpassword = password.replacingOccurrences(of: " ", with: "")
+            if newemail.isEmpty{
+                message += "Email address can't be empty"
+            }
+            else if newpassword.isEmpty{
+                message += "Password can't be empty"
+            }
+            else if !passwdIsValid(){
+                message = "Two passwords should be same."
+            }else if !validFormat(email : newemail){
+                message += "Please input valid email address"
+            }else{
+                self.userSignup()
+            }
+            if message != ""{
+                TWMessageBarManager.sharedInstance().showMessage(withTitle: "Error", description: message, type: .error)
             }
         }else{
-            TWMessageBarManager.sharedInstance().showMessage(withTitle: "Error", description: "Check your email address and password again", type: .error)
+            TWMessageBarManager.sharedInstance().showMessage(withTitle: "Error", description: "Email, password and your role can't be empty", type: .error)
         }
         
         
@@ -95,7 +87,47 @@ class SignupVC: UIViewController {
     
 }
 
+extension SignupVC{
+    func validFormat(email : String) -> Bool{
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: email)
+    }
+    
+    func userSignup(){
+        if let password = passwordTextField.text, let email = emailTextField.text, let role = userRole{
+        Auth.auth().createUser(withEmail: email, password: password){ (user,error) in
+            if let err = error{
+                // print(err.localizedDescription)
+                TWMessageBarManager.sharedInstance().showMessage(withTitle: "Error", description: err.localizedDescription, type: .error)
+            }else{
+                if let fireBaseUser = user{
+                    let userDict = ["name" : self.nameTextField.text!,"email": email, "password" : password, "profilePic" : "", "role" : role]
+                    self.databaseRef?.child(fireBaseUser.uid).updateChildValues(userDict)
+                    TWMessageBarManager.sharedInstance().showMessage(withTitle: "Success", description: "sign up successfully", type: .info)
+                    //upload profile image information
+                    AccessFirebase.sharedAccess.uploadImg(image: self.profileImgView.image!){ res in
+                        guard let _ = res as? String else{return}
+                        //get curUserInfo
+                        AccessFirebase.sharedAccess.getCurUserInfo(){ res in
+                            guard let _ = res as? String else{return}
+                            //go to home page?
+                            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "InitialHome") as? UITabBarController {
+                                self.navigationController?.pushViewController(vc, animated: true)
+                            }
+                        }
+                        
+                    }
+                    
+                }
+            }
+        }
+        }
+    }
+}
 
+//MARK --> TextFiled Delegate method
 extension SignupVC: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == nameTextField{
@@ -126,6 +158,7 @@ extension SignupVC{
     }
 }
 
+//Mark --> Image picker delegate
 extension SignupVC{
     //imagePickerController delegate methods
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
