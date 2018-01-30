@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import TWMessageBarManager
 
 class AddTaskVC: UIViewController{
 
@@ -51,50 +52,13 @@ class AddTaskVC: UIViewController{
     }
     
     @objc func didClickSave() {
-        var dict = [String : Any]()
-        if let startDate = startDateLbl.text{
-            dict["startDate"] = startDate
-            newTask.startDate = startDate
+        //check if this task title is empty or not
+        let text = titleTextField.text?.replacingOccurrences(of: " ", with: "")
+        if (text?.isEmpty)!{
+            TWMessageBarManager.sharedInstance().showMessage(withTitle: "Error", description: "Task title can't be empty", type: .error)
+        }else{
+            self.saveNewTask()
         }
-        if let endDate = endDateLbl.text{
-            dict["endDate"] = endDate
-            newTask.endData = endDate
-        }
-        if let taskName = titleTextField.text{
-            dict["name"] = taskName
-            newTask.name = taskName
-        }
-        if let content = contentTextView.text{
-            if content != placeHolder{
-                dict["content"] = content
-                newTask.content = content
-            }else{
-                dict["content"] = ""
-                newTask.content = ""
-            }
-        }
-        if let oneProject = curProject{
-            dict["projectId"] = oneProject.id
-            newTask.projectId = oneProject.id
-        }
-        dict["isFinished"] = false
-        dict["userId"] = newTask.userId
-        //update database/
-        //task
-        let key = databaseRef?.child("tasks").childByAutoId().key
-        newTask.id = key!
-        databaseRef?.child("tasks").child(key!).updateChildValues(dict)
-        databaseRef?.child("projects").child((curProject?.id)!).child("tasks").updateChildValues([key! : "1"])
-        //update user info if assign an developer
-        if !newTask.userId.isEmpty && newTask.userId != ""{
-            let taskDict = [key! : "1"]
-            databaseRef?.child("users").child(newTask.userId).child("tasks").updateChildValues(taskDict)
-        }
-		
-        //send task info back
-        delegate?.didAddNewTask(newTask: newTask)
-        //pop view controller
-        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func btnAddAssignee(_ sender: Any) {
@@ -134,6 +98,55 @@ class AddTaskVC: UIViewController{
     
 }
 
+extension AddTaskVC{
+    func saveNewTask(){
+        var dict = [String : Any]()
+        if let startDate = startDateLbl.text{
+            dict["startDate"] = startDate
+            newTask.startDate = startDate
+        }
+        if let endDate = endDateLbl.text{
+            dict["endDate"] = endDate
+            newTask.endData = endDate
+        }
+        if let taskName = titleTextField.text{
+            dict["name"] = taskName
+            newTask.name = taskName
+        }
+        if let content = contentTextView.text{
+            if content != placeHolder{
+                dict["content"] = content
+                newTask.content = content
+            }else{
+                dict["content"] = ""
+                newTask.content = ""
+            }
+        }
+        if let oneProject = curProject{
+            dict["projectId"] = oneProject.id
+            newTask.projectId = oneProject.id
+        }
+        dict["isFinished"] = false
+        dict["userId"] = newTask.userId
+        //update database/
+        //task
+        let key = databaseRef?.child("tasks").childByAutoId().key
+        newTask.id = key!
+        databaseRef?.child("tasks").child(key!).updateChildValues(dict)
+        databaseRef?.child("projects").child((curProject?.id)!).child("tasks").updateChildValues([key! : "1"])
+        //update user info if assign an developer
+        if !newTask.userId.isEmpty && newTask.userId != ""{
+            let taskDict = [key! : "1"]
+            databaseRef?.child("users").child(newTask.userId).child("tasks").updateChildValues(taskDict)
+        }
+        
+        //send task info back
+        delegate?.didAddNewTask(newTask: newTask)
+        //pop view controller
+        navigationController?.popViewController(animated: true)
+    }
+}
+
 //MARK --> TextView and TextField delegate method
 extension AddTaskVC: UITextViewDelegate, UITextFieldDelegate{
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -146,8 +159,15 @@ extension AddTaskVC: UITextViewDelegate, UITextFieldDelegate{
         }
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        titleTextField.resignFirstResponder()
-        return true
+        let text = titleTextField.text?.replacingOccurrences(of: " ", with: "")
+        if textField == titleTextField && (text?.isEmpty)!{
+            //title can't be empy
+            TWMessageBarManager.sharedInstance().showMessage(withTitle: "Error", description: "Title can't be empty", type: .error)
+            return false
+        }else{
+            titleTextField.resignFirstResponder()
+            return true
+        }
     }
     
 }
