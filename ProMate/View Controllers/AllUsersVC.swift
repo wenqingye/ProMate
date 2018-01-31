@@ -21,12 +21,6 @@ class AllUsersVC: UIViewController {
         //list all user info here
         getAllUserList()
     }
-	
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-		
-		
-	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
