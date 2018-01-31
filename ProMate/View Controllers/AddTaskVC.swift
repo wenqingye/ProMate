@@ -6,6 +6,10 @@
 //  Copyright © 2018 Wenqing Ye. All rights reserved.
 //
 
+/*
+ This version can assign one task to multiple user. Also can choose assignee multiple times before submit
+ */
+
 import UIKit
 import Firebase
 import TWMessageBarManager
@@ -22,6 +26,7 @@ class AddTaskVC: UIViewController{
     var dateType = "start"
     var delegate : AddNewTask?
     var curProject : Project?
+    var selecedDeve = [String : User]()
     var newTask = Task(name: "", id: "", content: "", startDate: "", endData: "", isFinished: false, projectId: "", userId: "")
     
     var databaseRef : DatabaseReference?
@@ -65,6 +70,7 @@ class AddTaskVC: UIViewController{
         //add assignee, go to all users vc and choose one user
         if let controller = storyboard?.instantiateViewController(withIdentifier: "AllUsersVC") as? AllUsersVC{
             controller.delegate = self
+            controller.selecedDeve = self.selecedDeve
             navigationController?.present(controller, animated: true, completion: nil)
         }
     }
@@ -137,7 +143,12 @@ extension AddTaskVC{
         //update user info if assign an developer
         if !newTask.userId.isEmpty && newTask.userId != ""{
             let taskDict = [key! : "1"]
-            databaseRef?.child("users").child(newTask.userId).child("tasks").updateChildValues(taskDict)
+            let userArr = newTask.userId.split(separator: ",")
+            for item in userArr{
+                let uid = String(item)
+                databaseRef?.child("users").child(uid).child("tasks").updateChildValues(taskDict)
+            }
+            
         }
         
         //send task info back
@@ -174,9 +185,25 @@ extension AddTaskVC: UITextViewDelegate, UITextFieldDelegate{
 
 //MARK --> delegate method from add new assign class, get the information about the assignee
 extension AddTaskVC : AddAssignee{
-    func didAddNewAssignee(user: User) {
-        self.assigneeNameLbl.text = user.name
-        self.newTask.userId = user.id
+    func didAddNewAssignee(users: [User]) {
+        self.selecedDeve = [String : User]()
+        var nameStr = ""
+        var idStr = ""
+        for item in users{
+            self.selecedDeve[item.id] = item
+            nameStr += item.name
+            idStr += item.id
+            if let last = users.last{
+                if item.id != last.id{
+                    nameStr += ", "
+                    idStr += ","
+                }
+            }
+        }
+        self.assigneeNameLbl.text = nameStr
+        self.newTask.userId = idStr
+       //self.assigneeNameLbl.text = user.name
+       // self.newTask.userId = user.id
     }
 }
 

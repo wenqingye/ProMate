@@ -62,14 +62,33 @@ extension TaskDetailsVC{
             endDateLabel.text = "End Date:   \(curTask.endData)"
             //get developer name
             if curTask.userId != ""{
-                AccessFirebase.sharedAccess.getUser(id: curTask.userId){ user in
-                    self.developerNameLabel.text = "Developer Name: \(user.name)"
-                }
+                self.developerNameLabel.text = "Developer Name: "
+                self.getDevelopersInfo(curTask: curTask)
+//                AccessFirebase.sharedAccess.getUser(id: curTask.userId){ user in
+//                    self.developerNameLabel.text = "Developer Name: \(user.name)"
+//                }
             }else{
                 self.developerNameLabel.text = "This task hasn't been assigned"
             }
             
         }
         
+    }
+    
+    func getDevelopersInfo(curTask : Task){
+        let userIdsArr = curTask.userId.split(separator: ",")
+        for item in userIdsArr{
+            let str = String(item)
+            if str != ""{
+                AccessFirebase.sharedAccess.getUser(id: str){ user in
+                    if (self.developerNameLabel.text)! != "Developer Name: "{
+                        self.developerNameLabel.text = (self.developerNameLabel.text)! + ", " + user.name
+                    }else{
+                        self.developerNameLabel.text = (self.developerNameLabel.text)! + user.name
+                    }
+                    
+                }
+            }
+        }
     }
 }
