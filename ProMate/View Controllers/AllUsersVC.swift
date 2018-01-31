@@ -9,6 +9,7 @@ class AllUsersVC: UIViewController {
     var databaseRef : DatabaseReference?
     var allDeveloper: [User]?
     var delegate : AddAssignee?
+    var selecedDeve = [String : User]()
     
     @IBOutlet weak var userInfoTbl: UITableView!
     
@@ -35,7 +36,7 @@ class AllUsersVC: UIViewController {
 }
 
 protocol AddAssignee {
-    func didAddNewAssignee(user : User)
+    func didAddNewAssignee(users : [User])
 }
 
 extension AllUsersVC{
@@ -65,6 +66,15 @@ extension AllUsersVC{
 		
 		dismiss(animated: true, completion: nil)
 	}
+    
+    @IBAction func btnSave(_ sender : UIBarButtonItem){
+        let choosedUserArr = Array(selecedDeve.values)
+        if choosedUserArr.count > 0{
+            delegate?.didAddNewAssignee(users: choosedUserArr)
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 extension AllUsersVC : UITableViewDelegate, UITableViewDataSource{
@@ -88,6 +98,11 @@ extension AllUsersVC : UITableViewDelegate, UITableViewDataSource{
         else {
             cell?.profileImage.image = UIImage(named : "defaultProfileImg")
         }
+        if self.selecedDeve[oneUser.id] != nil{
+            cell?.selectButton.isSelected = true
+        }else{
+            cell?.selectButton.isSelected = false
+        }
         cell?.selectButton.tag = indexPath.row
         cell?.selectButton.addTarget(self, action: #selector(selectUser), for: .touchUpInside)
         return cell!
@@ -95,10 +110,19 @@ extension AllUsersVC : UITableViewDelegate, UITableViewDataSource{
     
     @objc func selectUser(sender : UIButton){
         let choosedUser = allDeveloper![sender.tag]
-        //update database
-        //update the user info, and the task info
+        sender.isSelected = !sender.isSelected
+        if sender.isSelected{
+            //add this user
+            self.selecedDeve[choosedUser.id] = choosedUser
+        }else{
+            //delete user from dictionary
+            if selecedDeve[choosedUser.id] != nil{
+                selecedDeve.removeValue(forKey: choosedUser.id)
+            }
+        }
+        
         //send this info back to add task vc
-        delegate?.didAddNewAssignee(user: choosedUser)
-        dismiss(animated: true, completion: nil)
+//        delegate?.didAddNewAssignee(user: choosedUser)
+//        dismiss(animated: true, completion: nil)
     }
 }
