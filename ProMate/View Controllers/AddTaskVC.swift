@@ -1,10 +1,3 @@
-//
-//  AddTaskVC.swift
-//  ProMate
-//
-//  Created by Wenqing Ye on 1/24/18.
-//  Copyright © 2018 Wenqing Ye. All rights reserved.
-//
 
 /*
  This version can assign one task to multiple user. Also can choose assignee multiple times before submit
@@ -22,7 +15,10 @@ class AddTaskVC: UIViewController{
     @IBOutlet weak var assigneeNameLbl: UILabel!
     @IBOutlet weak var startDateLbl: UILabel!
     @IBOutlet weak var endDateLbl: UILabel!
-    @IBOutlet weak var taskDatePicker: UIDatePicker!
+	@IBOutlet weak var assigneeButton: UIButton!
+	@IBOutlet weak var startDateButton: UIButton!
+	@IBOutlet weak var endDateButton: UIButton!
+	@IBOutlet weak var taskDatePicker: UIDatePicker!
     var dateType = "start"
     var delegate : AddNewTask?
     var curProject : Project?
@@ -35,6 +31,10 @@ class AddTaskVC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
 		
+		assigneeNameLbl.sizeToFit()
+		assigneeButton.asButton()
+		startDateButton.asButton()
+		endDateButton.asButton()
         contentTextView.text = placeHolder
         contentTextView.textColor = UIColor.lightGray
         databaseRef = Database.database().reference()
